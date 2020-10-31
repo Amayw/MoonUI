@@ -1,0 +1,23 @@
+{
+  "name": "moonui",
+  "version": "0.0.1",
+  "description": "一个UI库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amayw/MoonUI.git"
+  },
+  "keywords": [
+    "UI",
+    "vue"
+  ],
+  "author": "wwy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Amayw/MoonUI/issues"
+  },
+  "homepage": "https://github.com/Amayw/MoonUI#readme"
+}

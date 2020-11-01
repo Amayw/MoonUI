@@ -1,12 +1,19 @@
 <template>
-    <button class="m-button">
-        <slot/>
-    </button>
+    <div>
+        <button class="m-button">
+            <Icon v-if="icon&&iconPosition===`left`" :icon="icon"></Icon>
+            <slot></slot>
+            <Icon v-if="icon&&iconPosition===`right`" :icon="icon"></Icon>
+        </button>
+    </div>
 </template>
 
 <script>
-    export default{
+    import Icon from './components/Icon';
 
+    export default{
+        props:['icon','iconPosition'],
+        components: {Icon}
     }
 </script>
 

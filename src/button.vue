@@ -1,7 +1,7 @@
 <template>
     <div>
         <button class="m-button">
-            <Icon v-if="icon&&iconPosition===`left`" :icon="icon"></Icon>
+            <Icon v-if="icon&&iconPosition!==`right`" :icon="icon"></Icon>
             <slot></slot>
             <Icon v-if="icon&&iconPosition===`right`" :icon="icon"></Icon>
         </button>

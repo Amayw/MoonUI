@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <button class="m-button"><slot/></button>
-    </div>
+    <button class="m-button">
+        <slot/>
+    </button>
 </template>
 
 <script>

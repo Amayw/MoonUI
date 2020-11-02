@@ -1,5 +1,5 @@
 <template>
-    <svg class="icon">
+    <svg class="m-icon">
         <use :xlink:href=`#i-${icon}`></use>
     </svg>
 </template>
@@ -16,7 +16,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .icon {
+    .m-icon {
         width: 1em;
         height: 1em;
         vertical-align: -0.15em;

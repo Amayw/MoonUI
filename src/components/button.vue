@@ -1,36 +1,40 @@
 <template>
-    <button class="m-button">
-        <Icon v-if="icon&&iconPosition===`left`" :icon="icon"></Icon>
+    <button class="m-button" @click="$emit('click')">
+        <m-icon v-if="iconPosition===`left`&&(loading||icon)" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
         <slot></slot>
-        <Icon v-if="icon&&iconPosition===`right`" :icon="icon"></Icon>
+        <m-icon v-if="icon&&iconPosition===`right`" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
     </button>
 </template>
 
 <script>
-    import Icon from './components/Icon';
-
     export default {
         props: {
             icon: {},
+            loading:{},
             iconPosition: {
                 type: String,
                 default: 'left',
                 validator: (value) => {
-                  if(value!=='left'&&value!=='right'){
-                      return false;
-                  }else{
-                      return true;
-                  }
+                  return !(value !== 'left' && value !== 'right');
                 }
 
             }
         },
-        components: {Icon}
+        methods:{
+
+        }
     };
 </script>
 
 <style lang="scss" scoped>
-
+    @keyframes turnAround {
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform:rotate(360deg);
+        }
+    }
     .m-button {
         height: var(--button-height);
         padding: 0 1em;
@@ -38,9 +42,12 @@
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius);
 
+        >.loading{
+            animation: turnAround 2s infinite linear;
+        }
         &:active {
             background-color: var(--button-active-bg);
-        }
+      }
 
         &:hover {
             border-color: var(--border-color-hover);

@@ -32,6 +32,11 @@
         <m-button :loading="loading1" @click="loading1=!loading1">button1</m-button>
         <m-button icon="thumbs-up" :loading="loading2" @click="loading2=!loading2">button2</m-button>
         <m-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">button3</m-button>
+        <m-button-group>
+            <m-button icon="left">left</m-button>
+            <m-button>center</m-button>
+            <m-button icon="right" icon-position="right">right</m-button>
+        </m-button-group>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_2072028_1hp2e2q8sml.js"></script>

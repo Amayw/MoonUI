@@ -17,3 +17,13 @@ new Vue({
         }
 }
 })
+
+{
+    const Constructor=Vue.extend(Button);
+    const button=new Constructor({
+        propsData:{
+            icon:'settings'
+        }
+    });
+    button.$mount('#test');
+}

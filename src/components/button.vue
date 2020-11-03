@@ -1,7 +1,7 @@
 <template>
     <button class="m-button" @click="$emit('click')">
         <m-icon v-if="iconPosition===`left`&&(loading||icon)" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
-        <slot></slot>
+        <slot>button</slot>
         <m-icon v-if="icon&&iconPosition===`right`" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
     </button>
 </template>

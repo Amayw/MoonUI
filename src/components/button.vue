@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import Icon from './icon.vue'
+    import Icon from 'icon.vue'
     export default {
         components:{
             "m-icon":Icon

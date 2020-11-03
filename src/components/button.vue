@@ -9,10 +9,17 @@
 </template>
 
 <script>
+    import Icon from './icon.vue'
     export default {
+        components:{
+            "m-icon":Icon
+        },
         props: {
             icon: {},
-            loading:{},
+            loading:{
+                type:Boolean,
+                default:false
+            },
             iconPosition: {
                 type: String,
                 default: 'left',

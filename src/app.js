@@ -27,16 +27,16 @@ chai.use(spies)
 //测试icon属性
 {
     const Constructor=Vue.extend(Button);
-    const button=new Constructor({
+    const vm=new Constructor({
         propsData:{
             icon:'settings'
         }
     });
-    button.$mount();
-    let useElement=button.$el.querySelector('use');
+    vm.$mount();
+    let useElement=vm.$el.querySelector('use');
     let name=useElement.getAttribute('xlink:href');
     expect(name).to.equal("#i-settings");
-    button.$destroy();
+    vm.$destroy();
 }
 
 //测试loading

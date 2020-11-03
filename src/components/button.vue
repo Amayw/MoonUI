@@ -1,7 +1,7 @@
 <template>
     <button class="m-button" @click="$emit('click')">
         <m-icon v-if="iconPosition===`left`&&(loading||icon)" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
-        <slot>button</slot>
+        <slot></slot>
         <m-icon v-if="icon&&iconPosition===`right`" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
     </button>
 </template>
@@ -41,7 +41,7 @@
         background-color: var(--button-bg);
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius);
-
+        vertical-align: middle;
         >.loading{
             animation: turnAround 2s infinite linear;
         }

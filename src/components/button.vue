@@ -1,8 +1,10 @@
 <template>
     <button class="m-button" @click="$emit('click')">
-        <m-icon v-if="iconPosition===`left`&&(loading||icon)" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
+        <m-icon v-if="iconPosition===`left`&&(loading||icon)" :icon="loading?'loading':icon"
+                :class="loading?'loading left':'left'"></m-icon>
         <slot></slot>
-        <m-icon v-if="icon&&iconPosition===`right`" :icon="loading?'loading':icon" :class="loading?'loading':''"></m-icon>
+        <m-icon v-if="icon&&iconPosition===`right`" :icon="loading?'loading':icon"
+                :class="loading?'loading right':'right'"></m-icon>
     </button>
 </template>
 

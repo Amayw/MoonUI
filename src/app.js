@@ -18,6 +18,11 @@ new Vue({
 }
 })
 
+import chai from 'chai'
+const expect=chai.expect;
+//单元测试
+
+//测试icon属性
 {
     const Constructor=Vue.extend(Button);
     const button=new Constructor({
@@ -25,5 +30,69 @@ new Vue({
             icon:'settings'
         }
     });
-    button.$mount('#test');
+    button.$mount();
+    let useElement=button.$el.querySelector('use');
+    let name=useElement.getAttribute('xlink:href');
+    expect(name).to.equal("#i-settings");
+    button.$destroy();
+}
+
+//测试loading
+{
+    const Constructor=Vue.extend(Button);
+    const vm=new Constructor({
+        propsData:{
+            icon:"settings",
+            loading:true
+        }
+    });
+    vm.$mount();
+    let useElement=vm.$el.querySelector('use');
+    let name=useElement.getAttribute('xlink:href');
+    expect(name).to.equal('#i-loading');
+    vm.$destroy();
+}
+
+// 测试iconPosition属性
+{
+    const Constructor=Vue.extend(Button);
+    const vm=new Constructor({
+        propsData:{
+            content:'按钮',
+            icon:"download",
+            iconPosition:'right',
+        }
+    });
+    vm.$mount();
+    let svgElement=vm.$el.querySelector('svg');
+    let className=svgElement.getAttribute('class');
+    expect(className).to.equal('m-icon right');
+    vm.$destroy();
+}
+
+{
+    const Constructor=Vue.extend(Button);
+    const vm=new Constructor({
+        propsData:{
+            content:'按钮',
+            icon:"download",
+            loading:true
+        }
+    });
+    vm.$mount();
+    let svgElement=vm.$el.querySelector('svg');
+    let className=svgElement.getAttribute('class');
+    expect(className).to.equal('m-icon loading left');
+    vm.$destroy();
+}
+
+//测试click事件
+{
+    const Constructor=Vue.extend(Button);
+    const vm=new Constructor();
+    vm.$mount("#test");
+    vm.$on('click',()=>{
+        console.log('点击了')
+    });
+
 }

@@ -20,6 +20,8 @@ new Vue({
 
 import chai from 'chai'
 const expect=chai.expect;
+import spies from'chai-spies'
+chai.use(spies)
 //单元测试
 
 //测试icon属性
@@ -91,8 +93,9 @@ const expect=chai.expect;
     const Constructor=Vue.extend(Button);
     const vm=new Constructor();
     vm.$mount("#test");
-    vm.$on('click',()=>{
-        console.log('点击了')
-    });
-
+    const spy=chai.spy(function(){})
+    vm.$on('click',spy);
+    let button=vm.$el;
+    button.click();
+    expect(spy).to.have.been.called();
 }

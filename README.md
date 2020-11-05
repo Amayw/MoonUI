@@ -48,6 +48,10 @@
         },
     };
     ```
+4. 引入 svg symbols
+    ```
+    <script src="//at.alicdn.com/t/font_2072028_1hp2e2q8sml.js"></script>
+    ```
 
 ## 文档
 

@@ -28,7 +28,7 @@
         --border-color-hover: #666;
       }
     ```
-    IE5及以上浏览器都支持此样式
+    IE15及以上浏览器都支持此样式
 2. 安装
     ```
     npm install --save moonwangerui

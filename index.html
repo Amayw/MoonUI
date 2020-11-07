@@ -50,8 +50,11 @@
             <m-input value="input1" disabled></m-input>
             <m-input value="input2" readonly></m-input>
             <m-input value="input3"></m-input>
-            <m-input value="i" error="姓名不能少于两个字符" @change="inputChange"></m-input>
+            <m-input value="i" error="姓名不能少于两个字符"></m-input>
             <m-input value="input5" tip="输入正确"></m-input>
+            <m-input v-model="message"></m-input>
+            <span>{{message}}</span>
+            <button @click="message+=1">+1</button>
         </div>
     </div>
     <script src="./src/app.js"></script>

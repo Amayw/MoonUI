@@ -1,0 +1,122 @@
+<template>
+    <div class="wrapper" :class="{error,tip}">
+        <input :value='value' :disabled="disabled" :readonly="readonly" />
+        <template v-if="error">
+            <m-icon icon="error" class="icon-error"></m-icon>
+            <span class="errorMessage">{{error}}</span>
+        </template>
+        <template v-if="tip">
+            <m-icon icon="tip" class="icon-tip"></m-icon>
+            <span class="tipMessage">{{tip}}</span>
+        </template>
+    </div>
+</template>
+
+<script>
+    import Icon from './icon'
+    export default {
+        name:'MoonInput',
+        components:{
+            'm-icon':Icon
+        },
+        props:{
+            value:{},
+            disabled:{
+                type:Boolean,
+                default:false
+            },
+            readonly:{
+                type:Boolean,
+                default:false
+            },
+            error:{
+                type:String,
+            },
+            tip:{
+                type:String,
+            }
+        }
+    };
+</script>
+
+<style lang="scss" scoped>
+    $height:32px;
+    $border-color:#999;
+    $border-color-hover:#666;
+    $border-radius:4px;
+    $font-size:12px;
+    $box-shadow-color:rgba(0,0,0,0.5);
+    $disabled-color:#bbb;
+    $red:#F1453D;
+    $green:green;
+    .wrapper {
+        font-size: $font-size;
+        display: inline-flex;
+        align-items: center;
+
+        > input {
+            height: $height;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            padding: 0 8px;
+            font-size: inherit;
+
+            &:hover {
+                border-color: $border-color-hover;
+            }
+
+            &:focus {
+                box-shadow: inset 0 1px 3px $box-shadow-color;
+                outline: none;
+            }
+
+            &[disabled], &[readonly] {
+                border-color: $disabled-color;
+                color: $disabled-color;
+
+            }
+        }
+
+        &.error {
+            :not(lastchild) {
+                margin-right: .5em;
+            }
+
+            > input {
+                border-color: $red;
+                color: $red;
+
+                &:focus {
+                    box-shadow: inset 0 1px 3px $red;
+                }
+            }
+
+            .icon-error {
+                color: $red;
+            }
+
+            .errorMessage {
+                color: $red;
+            }
+        }
+        &.tip{
+            :not(lastchild){
+                margin-right: .5em;
+            }
+            >input{
+                border-color: $green;
+                color: $green;
+                &:focus{
+                    box-shadow: inset 0 1px 3px $green;
+                }
+            }
+            .icon-tip{
+                color:$green;
+            }
+            .tipMessage{
+                color: $green;
+            }
+        }
+    }
+
+</style>

@@ -13,6 +13,11 @@
         #app{
             margin: 20px;
         }
+
+        .box{
+            margin: 20px 0;
+
+        }
     </style>
     <style>
         :root{
@@ -25,21 +30,30 @@
             --border-color:#999;
             --border-color-hover:#666;
         }
-
     </style>
 </head>
 <body>
     <div id="app">
-        <m-button :loading="loading1" @click="loading1=!loading1">button1</m-button>
-        <m-button icon="thumbs-up" :loading="loading2" @click="loading2=!loading2">button2</m-button>
-        <m-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">button3</m-button>
-        <m-button-group>
-            <m-button icon="left">left</m-button>
-            <m-button>center</m-button>
-            <m-button icon="right" icon-position="right">right</m-button>
-        </m-button-group>
+        <div class="class">
+            <m-button :loading="loading1" @click="loading1=!loading1">button1</m-button>
+            <m-button icon="thumbs-up" :loading="loading2" @click="loading2=!loading2">button2</m-button>
+            <m-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">button3</m-button>
+        </div>
+        <div class="box">
+            <m-button-group>
+                <m-button icon="left">left</m-button>
+                <m-button>center</m-button>
+                <m-button icon="right" icon-position="right">right</m-button>
+            </m-button-group>
+        </div>
+        <div class="box">
+            <m-input value="input1" disabled></m-input>
+            <m-input value="input2" readonly></m-input>
+            <m-input value="input3"></m-input>
+            <m-input value="i" error="姓名不能少于两个字符"></m-input>
+            <m-input value="input5" tip="输入正确"></m-input>
+        </div>
     </div>
     <script src="./src/app.js"></script>
-
 </body>
 </html>

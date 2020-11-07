@@ -3,6 +3,7 @@ import Button from '../src/button';
 const expect = chai.expect;
 import Vue from 'vue'
 import Input from '../src/input'
+import {describe} from 'mocha';
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
@@ -27,7 +28,6 @@ describe('Input', () => {
             expect(input.value).to.equal('hello')
         })
         it('可以设置disabled.', () => {
-            const Constructor = Vue.extend(Input)
             vm = new Constructor({
                 propsData: {
                     disabled:true
@@ -38,7 +38,6 @@ describe('Input', () => {
             expect(input.getAttribute('disabled')).to.equal('disabled')
         })
         it('可以设置readonly.', () => {
-            const Constructor = Vue.extend(Input)
             vm = new Constructor({
                 propsData: {
                     readonly:true
@@ -50,7 +49,6 @@ describe('Input', () => {
             expect(input.getAttribute('readonly')).to.equal('readonly')
         })
         it('可以设置error.', () => {
-            const Constructor = Vue.extend(Input)
             vm = new Constructor({
                 propsData: {
                     error:'输入错误'
@@ -63,7 +61,6 @@ describe('Input', () => {
             expect(span.textContent).to.equal('输入错误')
         })
         it('可以设置tip.', () => {
-            const Constructor = Vue.extend(Input)
             vm = new Constructor({
                 propsData: {
                     tip: '输入正确'
@@ -76,5 +73,24 @@ describe('Input', () => {
             expect(span.textContent).to.equal('输入正确')
         })
     })
+    describe('Events',()=>{
+        const Constructor = Vue.extend(Input)
+        let vm;
+        afterEach(()=>{
+            vm.$destroy()
+        })
+        it('支持change/input/blur/focus事件',()=>{
+            ['change','input','blur','focus'].forEach(eventName=>{
+                vm=new Constructor({});
+                vm.$mount();
+                const callback=sinon.fake();
+                vm.$on(eventName,callback);
+                const event=new Event(eventName);
+                const input=vm.$el.querySelector('input');
+                input.dispatchEvent(event);
+                expect(callback).to.have.been.calledWith(event);
+            })
 
+        })
+    })
 })

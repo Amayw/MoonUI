@@ -56,6 +56,26 @@
             <span>{{message}}</span>
             <button @click="message+=1">+1</button>
         </div>
+        <div class="box">
+            <m-row>
+                <m-col>a</m-col>
+                <m-col>b</m-col>
+            </m-row>
+            <m-row>
+                <m-col>a</m-col>
+                <m-col>b</m-col>
+                <m-col>a</m-col>
+                <m-col>b</m-col>
+                <m-col>a</m-col>
+                <m-col>b</m-col>
+                <m-col>a</m-col>
+                <m-col>b</m-col>
+            </m-row>
+            <m-row>
+                <m-col span="15">a</m-col>
+                <m-col :span="9">b</m-col>
+            </m-row>
+        </div>
     </div>
     <script src="./src/app.js"></script>
 </body>

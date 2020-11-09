@@ -38,10 +38,10 @@
 
 <style lang="scss" scoped>
     .col{
-        height: 100px;
-        width: 100%;
+        /*width: 100%;*/
         >.inner{
             border: 1px solid red;
+            height: 50px;
         }
         $class-prefix: col-;
         @for $n from 1 through 24 {

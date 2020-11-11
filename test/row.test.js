@@ -31,27 +31,25 @@ describe('Button', () => {
             expect(getComputedStyle(cols[0]).paddingRight).to.eq('10px');
             expect(getComputedStyle(cols[1]).paddingLeft).to.eq('10px');
             done();
+            vm.$el.remove();
+            vm.$destroy();
         })
     })
 
-    it('row接收align',(done)=>{
-        Vue.component('m-row',Row);
-        Vue.component('m-col',Col);
+    it('row接收align',()=>{
         const div=document.createElement('div');
         document.body.appendChild(div);
-        div.innerHTML=`
-            <m-row align="center">
-                 <m-col span="12"></m-col>
-                 <m-col span="12"></m-col>
-            </m-row>`;
-        const vm=new Vue({
-            el:div
-        });
-        setTimeout(()=>{
-            const row=vm.$el.querySelector('.moon-row');
-            expect(getComputedStyle(row).justifyContent).to.eq('center');
-            done();
+        const Constructor=Vue.extend(Row);
+        const vm=new Constructor({
+            propsData:{
+                align:'right'
+            }
         })
+        vm.$mount(div);
+        const element=vm.$el;
+        expect(getComputedStyle(element).justifyContent).to.eq('flex-end');
+        vm.$el.remove();
+        vm.$destroy();
     })
 
 })

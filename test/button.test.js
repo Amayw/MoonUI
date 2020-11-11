@@ -42,7 +42,7 @@ describe('Button', () => {
             }
         }).$mount()
         const icon = vm.$el.querySelector('svg')
-        expect(icon.getAttribute('class')).to.equal('m-icon left')
+        expect(icon.classList.contains('left')).to.equal(true)
         vm.$destroy()
     })
     it('iconPosition==="right"，当loading=true时，svg的class="m-icon loading right"', () => {
@@ -55,7 +55,7 @@ describe('Button', () => {
             }
         }).$mount()
         const icon = vm.$el.querySelector('svg')
-        expect(icon.getAttribute('class')).to.equal('m-icon loading right')
+        expect(icon.classList.contains('right')).to.equal(true)
         vm.$destroy()
     })
     it('点击 button 触发 click 事件', () => {

@@ -1,5 +1,5 @@
 <template>
-    <div class="col" :class="colClass"
+    <div class="moon-col" :class="colClass"
          :style="colStyle">
             <slot></slot>
     </div>
@@ -47,14 +47,28 @@
                 gutter:0
             }
         },
+        methods:{
+            createClasses:(obj,str='')=>{
+                if(!obj) {return []};
+                let array=[];
+                if(obj.span){
+                    array.push(`col-${str}${obj.span}`);
+                }
+                if(obj.offset){
+                    array.push(`col-${str}${obj.offset}`);
+                }
+                return array;
+            }
+        },
         computed:{
             colClass(){
                 let {span,offset,pad,narrowPc,pc,widePc}=this;
-                return [span&&`col-${span}`,offset&&`offset-${offset}`
-                    ,...(pad?[`col-pad-${pad.span}`]:[])
-                    ,...(narrowPc?[`col-narrow-pc-${narrowPc.span}`]:[])
-                    ,...(pc?[`col-pc-${pc.span}`]:[])
-                    ,...(widePc?[`col-wide-pc-${widePc.span}`]:[])];
+                let {createClasses}=this;
+                return [...createClasses({span,offset})
+                    ,...createClasses(pad,'pad-')
+                    ,...createClasses(narrowPc,'narrow-pc-')
+                    ,...createClasses(pc,'pc-')
+                    ,...createClasses(widePc,'widePc-')];
             },
             colStyle(){
                 let {gutter}=this;
@@ -65,12 +79,7 @@
 </script>
 
 <style lang="scss">
-    .col{
-        /*width: 100%;*/
-        /*>.inner{*/
-        /*    border: 1px solid pink;*/
-        /*    height: 50px;*/
-        /*}*/
+    .moon-col{
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {

@@ -36,7 +36,7 @@
                 type:Object,
                 validator
             },
-            WidePc:{
+            widePc:{
                 type:Object,
                 validator
             }
@@ -68,7 +68,7 @@
                     ,...createClasses(pad,'pad-')
                     ,...createClasses(narrowPc,'narrow-pc-')
                     ,...createClasses(pc,'pc-')
-                    ,...createClasses(widePc,'widePc-')];
+                    ,...createClasses(widePc,'wide-pc-')];
             },
             colStyle(){
                 let {gutter}=this;

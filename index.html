@@ -11,12 +11,11 @@
             box-sizing: border-box;
         }
         #app{
-            /*margin: 20px;*/
+            margin: 20px;
         }
 
         .box{
             margin: 20px 0;
-            border: 1px solid yellow;
 
         }
     </style>
@@ -30,6 +29,13 @@
             --color:#333;
             --border-color:#999;
             --border-color-hover:#666;
+        }
+    </style>
+    <style>
+        .demo{
+            background-color: pink;
+            border: 1px solid hotpink;
+            height: 50px;
         }
     </style>
 </head>
@@ -58,37 +64,54 @@
             <button @click="message+=1">+1</button>
         </div>
         <div class="box">
-            <m-row>
-                <m-col span="9">
-                    <m-row align="left">
-                        <m-col>1</m-col>
-                        <m-col>2</m-col>
-                        <m-col>3</m-col>
-                        <m-col>4</m-col>
-                    </m-row>
-                </m-col>
-                <m-col span="15">
-                    <m-row align="right">
-                        <m-col>1</m-col>
-                        <m-col>2</m-col>
-                        <m-col>3</m-col>
-                        <m-col>4</m-col>
-                        <m-col>5</m-col>
-                        <m-col>6</m-col>
-                        <m-col>7</m-col>
-                    </m-row>
-                </m-col>
-            </m-row>
+<!--            <m-row>-->
+<!--                <m-col span="9">-->
+<!--                    <m-row align="left">-->
+<!--                        <m-col>1</m-col>-->
+<!--                        <m-col>2</m-col>-->
+<!--                        <m-col>3</m-col>-->
+<!--                        <m-col>4</m-col>-->
+<!--                    </m-row>-->
+<!--                </m-col>-->
+<!--                <m-col span="15">-->
+<!--                    <m-row align="right">-->
+<!--                        <m-col>1</m-col>-->
+<!--                        <m-col>2</m-col>-->
+<!--                        <m-col>3</m-col>-->
+<!--                        <m-col>4</m-col>-->
+<!--                        <m-col>5</m-col>-->
+<!--                        <m-col>6</m-col>-->
+<!--                        <m-col>7</m-col>-->
+<!--                    </m-row>-->
+<!--                </m-col>-->
+<!--            </m-row>-->
 <!--            <m-row gutter="20">-->
-<!--                <m-col>a</m-col>-->
-<!--                <m-col>a</m-col>-->
-<!--                <m-col>a</m-col>-->
-<!--                <m-col>a</m-col>-->
+<!--                <m-col span="6">a</m-col>-->
+<!--                <m-col span="6">a</m-col>-->
+<!--                <m-col span="6">a</m-col>-->
+<!--                <m-col span="6">a</m-col>-->
 <!--            </m-row>-->
 <!--            <m-row gutter="20">-->
 <!--                <m-col span="9">a</m-col>-->
 <!--                <m-col :span="12" :offset="3">b</m-col>-->
 <!--            </m-row>-->
+            <m-row>
+                <m-col span="24" :pad="{'span':12}" :narrowPc="{'span':8}" :pc="{'span':20}">
+                    <div class="demo">a</div>
+                </m-col>
+                <m-col span="24" :pad="{'span':12}" :narrowPc="{'span':8}" :pc="{'span':1}">
+                    <div class="demo">a</div>
+                </m-col>
+                <m-col span="24" :pad="{'span':12}" :narrowPc="{'span':8}" :pc="{'span':1}">
+                    <div class="demo">a</div>
+                </m-col>
+                <m-col span="24" :pad="{'span':12}" :narrowPc="{'span':8}" :pc="{'span':1}">
+                    <div class="demo">a</div>
+                </m-col>
+                <m-col span="24" :pad="{'span':12}" :narrowPc="{'span':8}" :pc="{'span':1}">
+                    <div class="demo">a</div>
+                </m-col>
+            </m-row>
         </div>
     </div>
     <script src="./src/app.js"></script>

@@ -1,13 +1,20 @@
 <template>
     <div class="col" :class="colClass"
          :style="colStyle">
-        <div class="inner">
             <slot></slot>
-        </div>
     </div>
 </template>
 
 <script>
+    let validator=(value)=>{
+        let valid=true;
+        Object.keys(value).forEach(key=>{
+            if(!['span','offset'].includes(key)){
+                valid=false;
+            }
+        })
+        return valid;
+    }
     export default {
         name:'MoonCol',
         props:{
@@ -16,7 +23,24 @@
             },
             offset:{
                 type:[String,Number]
+            },
+            pad:{
+                type:Object,
+                validator
+            },
+            narrowPc:{
+                type:Object,
+                validator
+            },
+            pc:{
+                type:Object,
+                validator
+            },
+            WidePc:{
+                type:Object,
+                validator
             }
+
         },
         data(){
             return{
@@ -25,8 +49,12 @@
         },
         computed:{
             colClass(){
-                let {span,offset}=this;
-                return [span&&`col-${span}`,offset&&`offset-${offset}`];
+                let {span,offset,pad,narrowPc,pc,widePc}=this;
+                return [span&&`col-${span}`,offset&&`offset-${offset}`
+                    ,...(pad?[`col-pad-${pad.span}`]:[])
+                    ,...(narrowPc?[`col-narrow-pc-${narrowPc.span}`]:[])
+                    ,...(pc?[`col-pc-${pc.span}`]:[])
+                    ,...(widePc?[`col-wide-pc-${widePc.span}`]:[])];
             },
             colStyle(){
                 let {gutter}=this;
@@ -36,13 +64,13 @@
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .col{
         /*width: 100%;*/
-        >.inner{
-            border: 1px solid red;
-            height: 50px;
-        }
+        /*>.inner{*/
+        /*    border: 1px solid pink;*/
+        /*    height: 50px;*/
+        /*}*/
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {
@@ -57,6 +85,70 @@
             }
         }
 
+
+        @media (min-width: 577px){
+            $class-prefix: col-pad-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24)*100%;
+                }
+            }
+
+            $class-prefix: offset-pad-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24)*100%;
+                }
+            }
+        }
+
+        @media (min-width: 769px){
+            $class-prefix: col-narrow-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24)*100%;
+                }
+            }
+
+            $class-prefix: offset-narrow-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24)*100%;
+                }
+            }
+        }
+
+        @media (min-width: 993px){
+            $class-prefix: col-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24)*100%;
+                }
+            }
+
+            $class-prefix: offset-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24)*100%;
+                }
+            }
+        }
+
+        @media (min-width: 1201px){
+            $class-prefix: col-wide-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    width: ($n / 24)*100%;
+                }
+            }
+
+            $class-prefix: offset-wide-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-prefix}#{$n} {
+                    margin-left: ($n / 24)*100%;
+                }
+            }
+        }
     }
 
 </style>

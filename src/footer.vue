@@ -11,7 +11,5 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-footer{
-        width: 100%;
-    }
+
 </style>

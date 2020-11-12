@@ -11,7 +11,5 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-header{
-        width: 100%;
-    }
+
 </style>

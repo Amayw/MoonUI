@@ -15,7 +15,7 @@
         }
 
         .box{
-            margin: 20px 0;
+            margin: 50px 0;
 
         }
     </style>
@@ -36,6 +36,21 @@
             background-color: pink;
             border: 1px solid hotpink;
             height: 50px;
+        }
+    </style>
+    <style>
+        .moon-header,.moon-footer{
+            background-color: cornflowerblue;
+            height: 100px;
+        }
+        .moon-aside{
+            width: 200px;
+            background-color: rosybrown;
+            height: 100px;
+        }
+        .moon-content{
+            background-color: yellowgreen;
+            height: 100px;
         }
     </style>
 </head>
@@ -64,37 +79,6 @@
             <button @click="message+=1">+1</button>
         </div>
         <div class="box">
-<!--            <m-row>-->
-<!--                <m-col span="9">-->
-<!--                    <m-row align="left">-->
-<!--                        <m-col>1</m-col>-->
-<!--                        <m-col>2</m-col>-->
-<!--                        <m-col>3</m-col>-->
-<!--                        <m-col>4</m-col>-->
-<!--                    </m-row>-->
-<!--                </m-col>-->
-<!--                <m-col span="15">-->
-<!--                    <m-row align="right">-->
-<!--                        <m-col>1</m-col>-->
-<!--                        <m-col>2</m-col>-->
-<!--                        <m-col>3</m-col>-->
-<!--                        <m-col>4</m-col>-->
-<!--                        <m-col>5</m-col>-->
-<!--                        <m-col>6</m-col>-->
-<!--                        <m-col>7</m-col>-->
-<!--                    </m-row>-->
-<!--                </m-col>-->
-<!--            </m-row>-->
-<!--            <m-row gutter="20">-->
-<!--                <m-col span="6">a</m-col>-->
-<!--                <m-col span="6">a</m-col>-->
-<!--                <m-col span="6">a</m-col>-->
-<!--                <m-col span="6">a</m-col>-->
-<!--            </m-row>-->
-<!--            <m-row gutter="20">-->
-<!--                <m-col span="9">a</m-col>-->
-<!--                <m-col :span="12" :offset="3">b</m-col>-->
-<!--            </m-row>-->
             <m-row>
                 <m-col span="24" :pad="{'span':24}" :narrow-pc="{'span':8}" :pc="{'span':20}">
                     <div class="demo"></div>
@@ -111,6 +95,43 @@
                     <div class="demo">a</div>
                 </m-col>
             </m-row>
+        </div>
+        <div class="box">
+            <m-layout style="{height:100px}">
+                <m-header></m-header>
+                <m-content></m-content>
+                <m-footer></m-footer>
+            </m-layout>
+        </div>
+        <div class="box">
+            <m-layout>
+                <m-header></m-header>
+                <m-layout>
+                    <m-aside></m-aside>
+                    <m-content></m-content>
+                </m-layout>
+                <m-footer></m-footer>
+            </m-layout>
+        </div>
+        <div class="box">
+            <m-layout>
+                <m-header></m-header>
+                <m-layout>
+                    <m-content></m-content>
+                    <m-aside></m-aside>
+                </m-layout>
+                <m-footer></m-footer>
+            </m-layout>
+        </div>
+        <div class="box">
+            <m-layout>
+                <m-aside></m-aside>
+                <m-layout>
+                    <m-header></m-header>
+                    <m-content></m-content>
+                    <m-footer></m-footer>
+                </m-layout>
+            </m-layout>
         </div>
     </div>
     <script src="./src/app.js"></script>

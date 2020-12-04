@@ -1,12 +1,52 @@
 <template>
     <div class="m-toast">
-        <slot/>
+        <slot></slot>
+        <div class="line"></div>
+        <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
 </template>
 
 <script>
     export default {
-        name:'MoonToast'
+        name:'MoonToast',
+        props:{
+            autoClose:{
+                type:Boolean,
+                default:true,
+            },
+            autoCloseDelay:{
+                type:Number,
+                default:5,
+            },
+            closeButton:{
+                type:Object,
+                default(){
+                    return {
+                        text:'关闭',
+                        callback:undefined
+                    }
+                }
+            }
+        },
+        mounted(){
+            if(this.autoClose){
+                setTimeout(()=>{
+                    this.close()
+                },this.autoCloseDelay*1000)
+            }
+        },
+        methods:{
+            close(){
+                this.$el.remove();
+                this.$destroy();
+            },
+            onClickClose(){
+                this.close();
+                if(this.closeButton.callback&&typeof this.closeButton.callback==='function'){
+                    this.closeButton.callback();
+                }
+            }
+        }
     };
 </script>
 
@@ -29,5 +69,13 @@
         border-radius: 4px;
         box-shadow: 0 03px 0 $toast-bg;
         color: #fff;
+        >.line{
+            height: 100%;
+            border-left: 1px solid #fff;
+            margin-left: 16px;
+        }
+        >.close{
+            padding-left: 16px;
+        }
     }
 </style>

@@ -37,6 +37,16 @@
 </script>
 
 <style lang="scss" scoped>
+
+    $button-height:32px;
+    $button-bg:white;
+    $button-active-bg:#eee;
+    $font-size:14px;
+    $border-radius:4px;
+    $color:#333;
+    $border-color:#999;
+    $border-color-hover:#666;
+
     @keyframes turnAround {
         from{
             transform: rotate(0deg);
@@ -46,21 +56,21 @@
         }
     }
     .m-button {
-        height: var(--button-height);
+        height: $button-height;
         padding: 0 1em;
-        background-color: var(--button-bg);
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
+        background-color: $button-bg;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
         vertical-align: middle;
         >.loading{
             animation: turnAround 2s infinite linear;
         }
         &:active {
-            background-color: var(--button-active-bg);
+            background-color: $button-active-bg;
       }
 
         &:hover {
-            border-color: var(--border-color-hover);
+            border-color: $border-color-hover;
         }
 
         &:focus {

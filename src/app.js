@@ -10,6 +10,8 @@ import Header from './header.vue'
 import Content from './content.vue'
 import Footer from './footer.vue'
 import Aside from './aside.vue'
+import Toast from './toast.vue'
+import ToastPlugin from './ToastPlugin'
 
 Vue.component('m-button',Button)
 Vue.component('m-icon',Icon)
@@ -22,6 +24,9 @@ Vue.component('m-header',Header)
 Vue.component('m-content',Content)
 Vue.component('m-footer',Footer)
 Vue.component('m-aside',Aside)
+Vue.component('m-toast',Toast)
+Vue.use(ToastPlugin);
+
 
 new Vue({
     el:'#app',
@@ -33,6 +38,11 @@ new Vue({
             message:'hi'
         }
     },
+    created(){
+    },
     methods:{
+        showToast(){
+            this.$toast('我是message')
+        }
     }
 })

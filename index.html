@@ -20,16 +20,7 @@
         }
     </style>
     <style>
-        :root{
-            --button-height:32px;
-            --button-bg:white;
-            --button-active-bg:#eee;
-            --font-size:14px;
-            --border-radius:4px;
-            --color:#333;
-            --border-color:#999;
-            --border-color-hover:#666;
-        }
+
     </style>
     <style>
         .demo{
@@ -55,82 +46,9 @@
 </head>
 <body>
     <div id="app">
-        <div class="class">
-            <m-button :loading="loading1" @click="loading1=!loading1">button1</m-button>
-            <m-button icon="thumbs-up" :loading="loading2" @click="loading2=!loading2">button2</m-button>
-            <m-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">button3</m-button>
-        </div>
+
         <div class="box">
-            <m-button-group>
-                <m-button icon="left">left</m-button>
-                <m-button>center</m-button>
-                <m-button icon="right" icon-position="right">right</m-button>
-            </m-button-group>
-        </div>
-        <div class="box">
-            <m-input value="input1" disabled></m-input>
-            <m-input value="input2" readonly></m-input>
-            <m-input value="input3"></m-input>
-            <m-input value="i" error="姓名不能少于两个字符"></m-input>
-            <m-input value="input5" tip="输入正确"></m-input>
-            <m-input v-model="message"></m-input>
-            <span>{{message}}</span>
-            <button @click="message+=1">+1</button>
-        </div>
-        <div class="box">
-            <m-row>
-                <m-col span="24" :pad="{'span':24}" :narrow-pc="{'span':8}" :pc="{'span':20}">
-                    <div class="demo"></div>
-                </m-col>
-                <m-col span="24" :pad="{'span':24}" :narrow-pc="{'span':8}" :pc="{'span':1}">
-                    <div class="demo"></div>
-                </m-col>
-                <m-col span="24" :pad="{'span':24}" :narrow-pc="{'span':8}" :pc="{'span':1}">
-                    <div class="demo"></div>
-                </m-col>
-            </m-row>
-            <m-row>
-                <m-col span="23" offset="1" :pad="{'span':20,'offset':4}" :narrow-pc="{'span':12,'offset':12}" :pc="{'span':4,'offset':20}">
-                    <div class="demo">a</div>
-                </m-col>
-            </m-row>
-        </div>
-        <div class="box">
-            <m-layout style="{height:100px}">
-                <m-header></m-header>
-                <m-content></m-content>
-                <m-footer></m-footer>
-            </m-layout>
-        </div>
-        <div class="box">
-            <m-layout>
-                <m-header></m-header>
-                <m-layout>
-                    <m-aside></m-aside>
-                    <m-content></m-content>
-                </m-layout>
-                <m-footer></m-footer>
-            </m-layout>
-        </div>
-        <div class="box">
-            <m-layout>
-                <m-header></m-header>
-                <m-layout>
-                    <m-content></m-content>
-                    <m-aside></m-aside>
-                </m-layout>
-                <m-footer></m-footer>
-            </m-layout>
-        </div>
-        <div class="box">
-            <m-layout>
-                <m-aside></m-aside>
-                <m-layout>
-                    <m-header></m-header>
-                    <m-content></m-content>
-                    <m-footer></m-footer>
-                </m-layout>
-            </m-layout>
+            <m-button @click="showToast">点击</m-button>
         </div>
     </div>
     <script src="./src/app.js"></script>

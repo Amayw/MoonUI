@@ -44,12 +44,12 @@ new Vue({
         showToast(){
             this.$toast('<p><strong>我是message</strong>message</p>',{
                 enableHtml: true,
-                // closeButton:{
-                //     text:'知道了',
-                //     callback:()=>{
-                //         console.log('用户知道了');
-                //     }
-                // }
+                closeButton:{
+                    text:'知道了',
+                    callback:()=>{
+                        console.log('用户知道了');
+                    }
+                }
             })
         }
     }

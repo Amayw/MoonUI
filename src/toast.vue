@@ -33,8 +33,8 @@
                 type:String,
                 default:'top',
                 validator(value){
-                    if(['top','bottom','middle'].indexOf(value)<0){
-                        return false;
+                    if(['top','bottom','middle'].indexOf(value)>=0){
+                        return value;
                     }
                 }
             }

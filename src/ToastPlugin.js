@@ -1,15 +1,24 @@
 import Toast from './toast'
 
+let currentToast;
 export default {
     install(Vue,Options){
         Vue.prototype.$toast=function(message,toastOptions){
-            let Constructor=Vue.extend(Toast);
-            const toast=new Constructor({
-                propsData:toastOptions
-            });
-            toast.$slots.default=message;
-            toast.$mount();
-            document.body.appendChild(toast.$el);
+              if(currentToast){
+                  currentToast.close();
+              }
+              currentToast=createToast(Vue,message,toastOptions)
+            }
         }
     }
+
+function createToast(Vue,message,propsDate){
+    let Constructor=Vue.extend(Toast);
+    const toast=new Constructor({
+        propsData:propsDate
+    });
+    toast.$slots.default=message;
+    toast.$mount();
+    document.body.appendChild(toast.$el);
+    return toast;
 }

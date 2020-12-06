@@ -42,8 +42,8 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast('<p><strong>我是message</strong>message</p>',{
-                enableHtml: true,
+            this.$toast(`我是message,${Math.random()}`,{
+                // enableHtml: true,
                 // closeButton:{
                 //     text:'知道了',
                 //     callback:()=>{

@@ -1,7 +1,8 @@
 <template>
     <div class="m-toast">
-        <slot></slot>
-        <div class="line"></div>
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default"></div>
+        <div v-if="closeButton" class="line"></div>
         <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
 </template>
@@ -20,12 +21,11 @@
             },
             closeButton:{
                 type:Object,
-                default(){
-                    return {
-                        text:'关闭',
-                        callback:undefined
-                    }
-                }
+                default:undefined
+            },
+            enableHtml:{
+                type:Boolean,
+                default:false
             }
         },
         mounted(){

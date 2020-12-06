@@ -42,7 +42,8 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast('我是message',{
+            this.$toast('<p><strong>我是message</strong>message</p>',{
+                enableHtml: true,
                 // closeButton:{
                 //     text:'知道了',
                 //     callback:()=>{

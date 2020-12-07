@@ -6,7 +6,8 @@
 
 <script>
     export default {
-        name:'MoonTabsBody'
+        name:'MoonTabsBody',
+        inject:['eventBus']
     };
 </script>
 

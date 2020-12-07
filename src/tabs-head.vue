@@ -7,7 +7,8 @@
 
 <script>
     export default {
-        name:'MoonTabsHead'
+        name:'MoonTabsHead',
+        inject:['eventBus']
     };
 </script>
 

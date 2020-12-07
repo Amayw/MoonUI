@@ -6,7 +6,21 @@
 
 <script>
     export default {
-        name:'MoonTabsPane'
+        name:'MoonTabsPane',
+        inject:['eventBus'],
+        props:{
+            name:{
+                type:[String,Number],
+                required:true
+            }
+        },
+        created() {
+            this.eventBus.$on('update:selected',(name)=>{
+                console.log(`我是pane,${name}`);
+            })
+        },
+        methods:{
+        }
     };
 </script>
 

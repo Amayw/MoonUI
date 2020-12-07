@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="moon-tabs">
         <slot></slot>
     </div>
 </template>
@@ -31,10 +31,12 @@
                 }
 
             }
+        },
+        mounted(){
+            this.eventBus.$emit('update:selected',this.selected);
         }
     };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

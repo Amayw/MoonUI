@@ -7,7 +7,6 @@
 <script>
     export default {
         name:'MoonTabsBody',
-        inject:['eventBus']
     };
 </script>
 

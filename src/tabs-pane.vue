@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  :class="classActive" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -8,15 +8,32 @@
     export default {
         name:'MoonTabsPane',
         inject:['eventBus'],
+        data(){
+            return {
+                active:{
+                    type:Boolean,
+                    default:false
+                }
+            }
+        },
         props:{
             name:{
                 type:[String,Number],
                 required:true
             }
         },
+        computed:{
+            classActive(){
+                return this.active?'active':'';
+            }
+        },
         created() {
             this.eventBus.$on('update:selected',(name)=>{
-                console.log(`我是pane,${name}`);
+                if(name===this.name){
+                    this.active=true;
+                }else{
+                    this.active=false;
+                }
             })
         },
         methods:{
@@ -25,5 +42,10 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .moon-tabs-item{
+        padding: 0 2em;
+        &.active{
+            background-color: red;
+        }
+    }
 </style>

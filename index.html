@@ -11,15 +11,18 @@
         <div class="box">
             <m-tabs :selected.sync="selectedTab">
                 <m-tabs-head>
-                    <m-tabs-body name="tabs1">tabs1</m-tabs-body>
-                    <m-tabs-body name="tabs2">tabs2</m-tabs-body>
-                    <m-tabs-body name="tabs3">tabs3</m-tabs-body>
+                    <m-tabs-item name="tabs1"><m-icon icon="settings"></m-icon>tabs1</m-tabs-item>
+                    <m-tabs-item name="tabs2">tabs2</m-tabs-item>
+                    <m-tabs-item name="tabs3">tabs3</m-tabs-item>
+                    <template slot="action">
+                        <button>设置</button>
+                    </template>
                 </m-tabs-head>
-                <m-tabs-item>
+                <m-tabs-body>
                     <m-tabs-pane name="content1">content1</m-tabs-pane>
                     <m-tabs-pane name="content2">content2</m-tabs-pane>
                     <m-tabs-pane name="content3">content3</m-tabs-pane>
-                </m-tabs-item>
+                </m-tabs-body>
             </m-tabs>
         </div>
     </div>

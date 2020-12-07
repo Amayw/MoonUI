@@ -6,7 +6,13 @@
 
 <script>
     export default {
-        name:'MoonTabsItem'
+        name:'MoonTabsItem',
+        props:{
+            disabled:{
+                type:Boolean,
+                default:false
+            }
+        }
     };
 </script>
 

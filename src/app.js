@@ -50,7 +50,7 @@ new Vue({
                 //         console.log('用户知道了');
                 //     }
                 // }
-                position:'middle'
+                // position:'bottom'
             })
         }
     }

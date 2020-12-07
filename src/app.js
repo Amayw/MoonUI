@@ -12,6 +12,11 @@ import Footer from './footer.vue'
 import Aside from './aside.vue'
 import Toast from './toast.vue'
 import ToastPlugin from './ToastPlugin'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsBody from './tabs-body'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
 
 Vue.component('m-button',Button)
 Vue.component('m-icon',Icon)
@@ -26,32 +31,22 @@ Vue.component('m-footer',Footer)
 Vue.component('m-aside',Aside)
 Vue.component('m-toast',Toast)
 Vue.use(ToastPlugin);
-
+Vue.component('m-tabs',Tabs)
+Vue.component('m-tabs-head',TabsHead)
+Vue.component('m-tabs-body',TabsBody)
+Vue.component('m-tabs-item',TabsItem)
+Vue.component('m-tabs-pane',TabsPane)
 
 new Vue({
     el:'#app',
     data(){
         return{
-            loading1:false,
-            loading2:false,
-            loading3:false,
-            message:'hi'
+            selectedTab:'tab2'
         }
     },
     created(){
     },
     methods:{
-        showToast(){
-            this.$toast(`我是message,${Math.random()}`,{
-                // enableHtml: true,
-                // closeButton:{
-                //     text:'知道了',
-                //     callback:()=>{
-                //         console.log('用户知道了');
-                //     }
-                // }
-                // position:'bottom'
-            })
-        }
+
     }
 })

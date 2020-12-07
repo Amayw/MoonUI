@@ -32,7 +32,7 @@ describe('Toast',()=>{
             document.body.appendChild(div);
             const vm = new Constructor({
                 propsData: {
-                    autoClose: 2,
+                    autoClose: 1,
                 }
             })
             vm.$mount(div);
@@ -81,7 +81,7 @@ describe('Toast',()=>{
                 }
             })
             vm.$mount();
-            expect(vm.$el.classList.has('position-bottom')).to.equal(true);
+            expect(vm.$el.classList.contains('position-bottom')).to.equal(true);
         })
     })
 })

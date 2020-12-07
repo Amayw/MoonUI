@@ -4,51 +4,23 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./favicon.ico" />
     <title>MoonUI</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        #app{
-            margin: 20px;
-        }
-
-        .box{
-            margin: 50px 0;
-
-        }
-    </style>
-    <style>
-
-    </style>
-    <style>
-        .demo{
-            background-color: pink;
-            border: 1px solid hotpink;
-            height: 50px;
-        }
-    </style>
-    <style>
-        .moon-header,.moon-footer{
-            background-color: cornflowerblue;
-            height: 100px;
-        }
-        .moon-aside{
-            width: 200px;
-            background-color: rosybrown;
-        }
-        .moon-content{
-            background-color: yellowgreen;
-            height: 100px;
-        }
-    </style>
 </head>
 <body>
     <div id="app">
 
         <div class="box">
-            <m-button @click="showToast">点击</m-button>
+            <m-tabs :selected.sync="selectedTab">
+                <m-tabs-head>
+                    <m-tabs-body name="tabs1">tabs1</m-tabs-body>
+                    <m-tabs-body name="tabs2">tabs2</m-tabs-body>
+                    <m-tabs-body name="tabs3">tabs3</m-tabs-body>
+                </m-tabs-head>
+                <m-tabs-item>
+                    <m-tabs-pane name="content1">content1</m-tabs-pane>
+                    <m-tabs-pane name="content2">content2</m-tabs-pane>
+                    <m-tabs-pane name="content3">content3</m-tabs-pane>
+                </m-tabs-item>
+            </m-tabs>
         </div>
     </div>
     <script src="./src/app.js"></script>

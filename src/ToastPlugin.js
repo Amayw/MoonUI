@@ -19,7 +19,7 @@ function createToast(Vue,message,propsDate,onClose){
     const toast=new Constructor({
         propsData:propsDate
     });
-    toast.$slots.default=message;
+    toast.$slots.default=[message];
     toast.$mount();
     toast.$on('close',onClose);
     document.body.appendChild(toast.$el);

@@ -41,5 +41,47 @@ describe('Toast',()=>{
                 done();
             })
         })
+
+        it('可以设置closeButton', () => {
+            const Constructor = Vue.extend(Toast);
+            const callback=sinon.fake();
+            const vm = new Constructor({
+                propsData: {
+                    closeButton:{
+                        text:'关闭',
+                        callback
+                    }
+                }
+            })
+            vm.$mount();
+            const closeText=vm.$el.querySelector('.close');
+            expect(closeText.textContent.trim()).to.equal('关闭');
+            closeText.click();
+            expect(callback).to.have.been.called;
+        })
+
+        it('可以设置enableHtml', () => {
+            const Constructor = Vue.extend(Toast);
+            const vm = new Constructor({
+                propsData: {
+                    enableHtml:true
+                }
+            })
+            vm.$slots.default=['<span id="king">今天天气真好</span>'];
+            vm.$mount();
+            const span=vm.$el.querySelector('#king');
+            expect(span).to.exist;
+        })
+
+        it('可以设置position', () => {
+            const Constructor = Vue.extend(Toast);
+            const vm = new Constructor({
+                propsData: {
+                    position:'bottom'
+                }
+            })
+            vm.$mount();
+            expect(vm.$el.classList.has('position-bottom')).to.equal(true);
+        })
     })
 })

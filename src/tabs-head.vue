@@ -14,7 +14,6 @@
         inject:['eventBus'],
         mounted(){
             this.eventBus.$on('update:selected',(name,vm)=>{
-                console.log(vm.$el);
                 const {width,height,top,left} =vm.$el.getBoundingClientRect();
                 const leftp=vm.$el.parentNode.getBoundingClientRect().left;
                 this.$refs.line.style.width=`${width}px`;

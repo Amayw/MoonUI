@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-tabs-item" @click="updateSelected" :class="classes">
+    <div class="moon-tabs-item" @click="updateSelected" :class="classes" :data-name="name">
             <slot></slot>
     </div>
 </template>
@@ -69,7 +69,7 @@
         }
         &.disabled{
             opacity: 0.2;
-            cursor: default;
+            cursor: not-allowed;
         }
     }
 </style>

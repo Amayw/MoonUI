@@ -1,4 +1,3 @@
-import Button from '../src/button';
 
 const expect = chai.expect;
 import Vue from 'vue';
@@ -10,7 +9,7 @@ Vue.config.devtools = false;
 
 describe('Input', () => {
     it('存在.', () => {
-        expect(Button).to.be.ok;
+        expect(Input).to.be.ok;
     });
     describe('Props', () => {
         const Constructor = Vue.extend(Input);

@@ -1,5 +1,5 @@
 <template>
-    <div  class="moon-tabs-pane" :class="classActive" v-if="active">
+    <div  class="moon-tabs-pane" :class="classActive" v-if="active"  :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -28,13 +28,11 @@
             }
         },
         created() {
-            this.eventBus.$on('update:selected',(name)=>{
-                if(name===this.name){
-                    this.active=true;
-                }else{
-                    this.active=false;
-                }
-            })
+            if(this.eventBus){
+                this.eventBus.$on('update:selected',(name)=>{
+                    this.active = name === this.name;
+                })
+            }
         },
         methods:{
         }

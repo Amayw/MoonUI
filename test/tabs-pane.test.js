@@ -9,4 +9,15 @@ describe('Tabs', () => {
         expect(TabsPane).to.be.ok
     })
 
+    it('接受name',()=>{
+        const Constructor = Vue.extend(TabsPane)
+        const vm = new Constructor({
+            propsData: {
+                name:'meinv'
+            }
+        }).$mount()
+        expect(vm.$el.getAttribute('data-name')).to.equal('meinv');
+        vm.$destroy()
+    })
+
 })

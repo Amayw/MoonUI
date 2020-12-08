@@ -45,6 +45,7 @@ describe('Tabs', () => {
             expect(name.classList.contains('active')).to.be.true;
             done();
         })
+        vm.$destroy()
 
     })
 

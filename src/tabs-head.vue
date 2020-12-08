@@ -11,7 +11,15 @@
 <script>
     export default {
         name:'MoonTabsHead',
+        inject:['eventBus'],
         mounted(){
+            this.eventBus.$on('update:selected',(name,vm)=>{
+                console.log(vm.$el);
+                const {width,height,top,left} =vm.$el.getBoundingClientRect();
+                const leftp=vm.$el.parentNode.getBoundingClientRect().left;
+                this.$refs.line.style.width=`${width}px`;
+                this.$refs.line.style.left=`${left-leftp}px`;
+            })
         }
     };
 </script>
@@ -27,9 +35,8 @@
         >.line{
             position: absolute;
             border-bottom: 2px solid cornflowerblue;
-            width: 100px;
-            left: 0;
             bottom: 0;
+            transition: all 350ms;
         }
         >.moon-action{
             margin-left: auto;

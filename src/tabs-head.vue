@@ -1,6 +1,7 @@
 <template>
     <div class="moon-tabs-head">
         <slot></slot>
+        <div ref="line" class="line"></div>
         <div class="moon-action">
             <slot name="action"></slot>
         </div>
@@ -9,6 +10,9 @@
 
 <script>
     export default {
+        name:'MoonTabsHead',
+        mounted(){
+        }
     };
 </script>
 
@@ -19,6 +23,14 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        position: relative;
+        >.line{
+            position: absolute;
+            border-bottom: 2px solid cornflowerblue;
+            width: 100px;
+            left: 0;
+            bottom: 0;
+        }
         >.moon-action{
             margin-left: auto;
         }

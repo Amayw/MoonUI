@@ -42,17 +42,24 @@
         },
         methods:{
             xxx(){
-                this.eventBus.$emit('update:selected',this.name);
+                this.eventBus.$emit('update:selected',this.name,this);
             }
         }
     };
 </script>
 
 <style lang="scss" scoped>
+    $blue:#6495ed;
     .moon-tabs-item{
         padding: 0 2em;
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &.active{
-            background-color: red;
+            color: $blue;
+            font-weight: bold;
         }
     }
 </style>

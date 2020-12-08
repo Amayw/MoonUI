@@ -2,7 +2,7 @@
     <div class="m-toast" ref="wrapper" :class="toastClass">
         <div class="message">
             <slot v-if="!enableHtml"></slot>
-            <div v-else v-html="$slots.default"></div>
+            <div v-else v-html="$slots.default[0]"></div>
         </div>
         <div v-if="closeButton" class="line" ref="line"></div>
         <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
@@ -14,12 +14,11 @@
         name:'MoonToast',
         props:{
             autoClose:{
-                type:Boolean,
-                default:true,
-            },
-            autoCloseDelay:{
-                type:Number,
+                type:[Boolean,Number],
                 default:5,
+                validator(value) {
+                    return value === false || typeof value === 'number';
+                }
             },
             closeButton:{
                 type:Object,
@@ -33,9 +32,7 @@
                 type:String,
                 default:'top',
                 validator(value){
-                    if(['top','bottom','middle'].indexOf(value)>=0){
-                        return value;
-                    }
+                    return ['top', 'bottom', 'middle'].indexOf(value) >= 0;
                 }
             }
         },
@@ -53,7 +50,7 @@
                 if(this.autoClose){
                     setTimeout(()=>{
                         this.close()
-                    },this.autoCloseDelay*1000)
+                    },this.autoClose*1000)
                 }
             },
             updateStyles(){
@@ -82,6 +79,14 @@
     $font-size:14px;
     $toast-min-height:40px;
     $toast-bg:pink;
+    @keyframes fade{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
     .m-toast{
         font-size:$font-size;
         line-height: 1.8;
@@ -97,6 +102,11 @@
         border-radius: 4px;
         box-shadow: 0 03px 0 $toast-bg;
         color: #fff;
+        animation: fade 300ms linear;
+        &.position-top{
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
         &.position-middle{
             top: 50%;
             transform: translateX(-50%) translateY(-50%);
@@ -104,6 +114,8 @@
         &.position-bottom{
             top: 100%;
             transform: translateX(-50%) translateY(-100%);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
         >.message{
             padding: 8px 0;

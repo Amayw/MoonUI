@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-tabs-item" @click="xxx" :class="classActive">
+    <div class="moon-tabs-item" @click="updateSelected" :class="classes">
             <slot></slot>
     </div>
 </template>
@@ -27,8 +27,11 @@
         },
         inject:['eventBus'],
         computed:{
-            classActive(){
-                return this.active?'active':'';
+            classes(){
+                return {
+                    active:this.active,
+                    disabled:this.disabled
+                }
             }
         },
         created() {
@@ -41,7 +44,10 @@
             })
         },
         methods:{
-            xxx(){
+            updateSelected(){
+                if(this.disabled){
+                    return;
+                }
                 this.eventBus.$emit('update:selected',this.name,this);
             }
         }
@@ -60,6 +66,10 @@
         &.active{
             color: $blue;
             font-weight: bold;
+        }
+        &.disabled{
+            opacity: 0.2;
+            cursor: default;
         }
     }
 </style>

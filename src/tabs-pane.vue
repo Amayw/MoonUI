@@ -1,5 +1,5 @@
 <template>
-    <div  :class="classActive" v-if="active">
+    <div  class="moon-tabs-pane" :class="classActive" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -42,10 +42,10 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-tabs-item{
-        padding: 0 2em;
+    .moon-tabs-pane{
+        padding: 1em;
         &.active{
-            background-color: red;
+
         }
     }
 </style>

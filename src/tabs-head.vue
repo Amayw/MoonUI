@@ -32,6 +32,8 @@
         justify-content: flex-start;
         align-items: center;
         position: relative;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: -1;
         >.line{
             position: absolute;
             border-bottom: 2px solid cornflowerblue;
@@ -40,6 +42,10 @@
         }
         >.moon-action{
             margin-left: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1em;
         }
     }
 </style>

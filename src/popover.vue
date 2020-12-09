@@ -1,6 +1,6 @@
 <template>
-    <div class="moon-popover" @click="changeVisible">
-        <div  v-if="visible" class="moon-content-wrapper">
+    <div class="moon-popover" @click.stop="changeVisible">
+        <div  v-if="visible" class="moon-content-wrapper" @click.stop>
             <slot name="content"></slot>
         </div>
         <slot></slot>
@@ -17,9 +17,16 @@
         },
         methods:{
             changeVisible(){
-                console.log(1);
                 this.visible=!this.visible;
-                console.log(this.visible);
+                if(this.visible===true){
+                    const eventHandler=()=>{
+                        this.visible=false;
+                        document.removeEventListener('click',eventHandler);
+                    }
+                    this.$nextTick(()=>{
+                        document.addEventListener('click',eventHandler);
+                    })
+                }
             }
         }
     };

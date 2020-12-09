@@ -2,30 +2,24 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="./favicon.ico" />
+    <link rel="icon" href="./favicon.ico"/>
     <title>MoonUI</title>
 </head>
 <body>
-    <div id="app">
-
-        <div class="box">
-            <m-tabs :selected.sync="selectedTab">
-                <m-tabs-head class="hi">
-                    <m-tabs-item name="tabs1">tabs1</m-tabs-item>
-                    <m-tabs-item name="tabs2">tabs2</m-tabs-item>
-                    <m-tabs-item name="tabs3" disabled>tabs3</m-tabs-item>
-                    <template slot="action">
-                        <button>设置</button>
-                    </template>
-                </m-tabs-head>
-                <m-tabs-body>
-                    <m-tabs-pane name="tabs1">content1</m-tabs-pane>
-                    <m-tabs-pane name="tabs2">content2</m-tabs-pane>
-                    <m-tabs-pane name="tabs3">content3</m-tabs-pane>
-                </m-tabs-body>
-            </m-tabs>
-        </div>
-    </div>
-    <script src="./src/app.js"></script>
+<div id="app" style="padding: 100px">
+    <m-popover>
+        <template slot="content">
+            <div>popover的内容</div>
+        </template>
+        <button>click</button>
+    </m-popover>
+    <m-popover>
+        <template slot="content">
+            <div>popover的内容</div>
+        </template>
+        <button>click</button>
+    </m-popover>
+</div>
+<script src="./src/app.js"></script>
 </body>
 </html>

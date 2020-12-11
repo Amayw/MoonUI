@@ -36,26 +36,12 @@
         computed: {
             classes() {
                 return `position-${this.position}`;
-            },
-            openEvent(){
-                if(this.trigger==='click'){
-                    return 'click';
-                }else{
-                    return 'mouseenter'
-                }
-            },
-            closeEvent(){
-                if(this.trigger==='click'){
-                    return 'click';
-                }else{
-                    return 'mouseleave'
-                }
             }
         },
         mounted() {
             if(this.trigger==='click'){
                 this.$refs.popover.addEventListener('click',this.onClick)
-            }else{
+            }else if(this.trigger==='hover'){
                 this.$refs.popover.addEventListener('mouseenter',this.open)
                 this.$refs.popover.addEventListener('mouseleave',this.close)
             }
@@ -63,7 +49,7 @@
         destroyed() {
             if(this.trigger==='click'){
                 this.$refs.popover.removeListener('click',this.onClick)
-            }else{
+            }else if(this.trigger==='hover'){
                 this.$refs.popover.removeListener('mouseenter',this.open)
                 this.$refs.popover.removeListener('mouseleave',this.close)
             }

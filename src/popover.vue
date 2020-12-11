@@ -1,6 +1,6 @@
 <template>
-    <div class="moon-popover" ref="popover" @click="onClick" >
-        <div ref="contentWrapper"  v-if="visible" class="moon-content-wrapper" :class="classes">
+    <div class="moon-popover" ref="popover" @click="onClick">
+        <div ref="contentWrapper" v-if="visible" class="moon-content-wrapper" :class="classes">
             <slot name="content"></slot>
         </div>
         <span ref="triggerButton" style="display: inline-block">
@@ -11,72 +11,78 @@
 
 <script>
     export default {
-        name:'MoonPopOver',
-        data(){
-            return{
-                visible:false
-            }
+        name: 'MoonPopOver',
+        data() {
+            return {
+                visible: false
+            };
         },
-        props:{
-            position:{
-                type:String,
-                default:'top',
-                validator(value){
+        props: {
+            position: {
+                type: String,
+                default: 'top',
+                validator(value) {
                     return ['left', 'right', 'bottom', 'top'].indexOf(value) >= 0;
                 }
             }
         },
-        computed:{
-            classes(){
-                return `position-${this.position}`
+        computed: {
+            classes() {
+                return `position-${this.position}`;
             }
         },
-        methods:{
-            positionContent(){
-                const {contentWrapper,triggerButton}=this.$refs;
+        methods: {
+            positionContent() {
+                const {contentWrapper, triggerButton} = this.$refs;
                 document.body.appendChild(contentWrapper);
-                const {left,top,width,height}=triggerButton.getBoundingClientRect();
-                if(this.position==='top'){
-                    contentWrapper.style.left=left+window.scrollX+'px';
-                    contentWrapper.style.top=top+window.scrollY+'px';
-                }else if(this.position==='bottom'){
-                    contentWrapper.style.left=left+window.scrollX+'px';
-                    contentWrapper.style.top=top+height+window.scrollY+'px';
-                }else if(this.position==='left'){
-                    const {height:height2}=contentWrapper.getBoundingClientRect();
-                    contentWrapper.style.left=left+window.scrollX+'px';
-                    contentWrapper.style.top=top+window.scrollY+(height-height2)/2+'px';
-                }else if(this.position==='right'){
-                    const {height:height2}=contentWrapper.getBoundingClientRect();
-                    contentWrapper.style.left=left+window.scrollX+width+'px';
-                    contentWrapper.style.top=top+window.scrollY+(height-height2)/2+'px';
-                }
+                const {left, top, width, height} = triggerButton.getBoundingClientRect();
+                const {height: height2} = contentWrapper.getBoundingClientRect();
+                let positions = {
+                    top: {
+                        left: left + window.scrollX,
+                        top: top + window.scrollY,
+                    },
+                    bottom: {
+                        left: left + window.scrollX,
+                        top: top + height + window.scrollY,
+                    },
+                    left: {
+                        left: left + window.scrollX,
+                        top: top + window.scrollY + (height - height2) / 2,
+                    },
+                    right: {
+                        left: left + window.scrollX + width,
+                        top: top + window.scrollY + (height - height2) / 2,
+                    }
+                };
+                contentWrapper.style.left = positions[this.position].left + 'px';
+                contentWrapper.style.top = positions[this.position].top + 'px';
             },
-            onClickDocument(e){
-                if (this.$refs.popover&&(this.$refs.popover===e.target||this.$refs.popover.contains(e.target))) {
+            onClickDocument(e) {
+                if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
                     return;
                 }
-                if (this.$refs.contentWrapper&&(this.$refs.contentWrapper===e.target||this.$refs.contentWrapper.contains(e.target))) {
+                if (this.$refs.contentWrapper && (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))) {
                     return;
                 }
                 this.close();
             },
-            open(){
-                this.visible=true;
-                this.$nextTick(()=>{
+            open() {
+                this.visible = true;
+                this.$nextTick(() => {
                     this.positionContent();
-                    document.addEventListener('click',this.onClickDocument);
-                })
+                    document.addEventListener('click', this.onClickDocument);
+                });
             },
-            close(){
-                this.visible=false;
+            close() {
+                this.visible = false;
                 document.removeEventListener('click', this.onClickDocument);
             },
-            onClick(event){
-                if(this.$refs.triggerButton.contains(event.target)){
-                    if(this.visible===true){
+            onClick(event) {
+                if (this.$refs.triggerButton.contains(event.target)) {
+                    if (this.visible === true) {
                         this.close();
-                    }else{
+                    } else {
                         this.open();
                     }
                 }
@@ -86,21 +92,23 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-popover{
+    .moon-popover {
         display: inline-flex;
         vertical-align: top;
         position: relative;
     }
-    .moon-content-wrapper{
+
+    .moon-content-wrapper {
         position: absolute;
         border: 1px solid #333;
         background: white;
-        filter:drop-shadow(0 1px 1px rgba(0,0,0,0.5));
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
         padding: 1em;
         border-radius: 4px;
         max-width: 20em;
         word-break: break-all;
-        &::before,&::after{
+
+        &::before, &::after {
             content: "";
             display: block;
             position: absolute;
@@ -109,60 +117,68 @@
             height: 0;
         }
 
-        &.position-top{
+        &.position-top {
             margin-top: -10px;
             transform: translateY(-100%);
-            &::before,&::after{
+
+            &::before, &::after {
                 border-top-color: #333;
                 top: calc(100% + 1px);
                 left: 1em;
             }
-            &::after{
+
+            &::after {
                 border-top-color: white;
                 top: 100%;
             }
         }
 
-        &.position-bottom{
+        &.position-bottom {
             margin-top: 10px;
-            &::before,&::after{
+
+            &::before, &::after {
                 bottom: calc(100% + 1px);
                 left: 1em;
                 border-bottom-color: #333;
             }
-            &::after{
+
+            &::after {
                 bottom: 100%;
                 border-bottom-color: white;
             }
         }
 
-        &.position-left{
+        &.position-left {
             transform: translateX(-100%);
             margin-left: -10px;
-            &::before,&::after{
+
+            &::before, &::after {
                 left: calc(100% + 1px);
                 bottom: 50%;
                 transform: translateY(50%);
                 border-left-color: #333;
             }
-            &::after{
-                left: 100% ;
+
+            &::after {
+                left: 100%;
                 bottom: 50%;
                 transform: translateY(50%);
                 border-left-color: white;
             }
         }
 
-        &.position-right{
+        &.position-right {
             margin-left: 10px;
-            &::before,&::after{
+
+            &::before, &::after {
                 right: calc(100% + 1px);
                 bottom: 50%;
                 transform: translateY(50%);
                 border-right-color: #333;
             }
-            &::after{
-                right: 100% ;
+
+            &::after {
+                right: 100%;
                 bottom: 50%;
                 transform: translateY(50%);
                 border-right-color: white;

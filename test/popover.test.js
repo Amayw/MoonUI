@@ -34,7 +34,7 @@ describe('Popover', () => {
         })
     })
 
-    xit('可以设置trigger', (done) => {
+    it('可以设置trigger', (done) => {
         Vue.component('m-popover',Popover);
         Vue.component('m-button',Button);
         const div=document.createElement('div');
@@ -50,17 +50,12 @@ describe('Popover', () => {
         let vm=new Vue({
             el:div
         })
+        let event=new Event('mouseenter');
+        vm.$refs.cur.$el.dispatchEvent(event);
         vm.$nextTick(()=>{
-            const btn=vm.$el.querySelector('.m-button');
-            let event=new Event('mouseenter');
-            btn.dispatchEvent(event);
-            vm.$nextTick(()=>{
-                // console.log(vm.$refs.cur.$refs);
-                // const {contentWrapper}=vm.$refs.cur.$refs;
-
-                expect(document.querySelector('.content2')).to.exist;
-                done();
-            })
+            const {contentWrapper}=vm.$refs.cur.$refs;
+            expect(contentWrapper).to.exist;
+            done();
         })
     })
 })

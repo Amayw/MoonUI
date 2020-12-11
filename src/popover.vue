@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-popover" ref="popover" @click="onClick">
+    <div class="moon-popover" ref="popover">
         <div ref="contentWrapper" v-if="visible" class="moon-content-wrapper" :class="classes">
             <slot name="content"></slot>
         </div>
@@ -24,11 +24,48 @@
                 validator(value) {
                     return ['left', 'right', 'bottom', 'top'].indexOf(value) >= 0;
                 }
+            },
+            trigger:{
+                type:String,
+                default:'click',
+                validator(value){
+                    return ['click','hover'].indexOf(value)>=0;
+                }
             }
         },
         computed: {
             classes() {
                 return `position-${this.position}`;
+            },
+            openEvent(){
+                if(this.trigger==='click'){
+                    return 'click';
+                }else{
+                    return 'mouseenter'
+                }
+            },
+            closeEvent(){
+                if(this.trigger==='click'){
+                    return 'click';
+                }else{
+                    return 'mouseleave'
+                }
+            }
+        },
+        mounted() {
+            if(this.trigger==='click'){
+                this.$refs.popover.addEventListener('click',this.onClick)
+            }else{
+                this.$refs.popover.addEventListener('mouseenter',this.open)
+                this.$refs.popover.addEventListener('mouseleave',this.close)
+            }
+        },
+        destroyed() {
+            if(this.trigger==='click'){
+                this.$refs.popover.removeListener('click',this.onClick)
+            }else{
+                this.$refs.popover.removeListener('mouseenter',this.open)
+                this.$refs.popover.removeListener('mouseleave',this.close)
             }
         },
         methods: {

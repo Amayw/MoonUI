@@ -28,7 +28,9 @@
                 if (this.$refs.popover&&(this.$refs.popover===e.target||this.$refs.popover.contains(e.target))) {
                     return;
                 }
-                console.log(2);
+                if (this.$refs.contentWrapper&&(this.$refs.contentWrapper===e.target||this.$refs.contentWrapper.contains(e.target))) {
+                    return;
+                }
                 this.close();
             },
             open(){

@@ -3,7 +3,7 @@
         <div ref="contentWrapper"  v-if="visible" class="moon-content-wrapper">
             <slot name="content"></slot>
         </div>
-        <span ref="triggerButton">
+        <span ref="triggerButton" style="display: inline-block">
             <slot></slot>
         </span>
     </div>
@@ -25,8 +25,6 @@
                 this.$refs.contentWrapper.style.top=top+window.scrollY+'px';
             },
             onClickDocument(e){
-                console.log('执行了');
-                console.log(this);
                 if (this.$refs.popover&&(this.$refs.popover===e.target||this.$refs.popover.contains(e.target))) {
                     return;
                 }
@@ -41,17 +39,14 @@
                 })
             },
             close(){
-                console.log('close');
                 this.visible=false;
                 document.removeEventListener('click', this.onClickDocument);
             },
             onClick(event){
                 if(this.$refs.triggerButton.contains(event.target)){
                     if(this.visible===true){
-                        console.log('a');
                         this.close();
                     }else{
-                        console.log('b');
                         this.open();
                     }
                 }
@@ -68,8 +63,29 @@
     }
     .moon-content-wrapper{
         position: absolute;
-        border: 1px solid pink;
-        box-shadow: 0 0 3px rgba(0,0,0,0.5);
+        border: 1px solid #333;
+        background: white;
+        filter:drop-shadow(0 1px 1px rgba(0,0,0,0.5));
         transform: translateY(-100%);
+        margin-top: -10px;
+        padding: 1em;
+        border-radius: 4px;
+        max-width: 20em;
+        word-break: break-all;
+        &::before,&::after{
+            content: "";
+            display: block;
+            position: absolute;
+            border: 10px solid transparent;
+            border-top-color: #333;
+            width: 0;
+            height: 0;
+            top: calc(100% + 1px);
+            left: 1em;
+        }
+        &::after{
+            border-top-color: white;
+            top: 100%;
+        }
     }
 </style>

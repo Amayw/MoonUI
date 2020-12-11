@@ -12,11 +12,6 @@
 <script>
     export default {
         name: 'MoonPopOver',
-        data() {
-            return {
-                visible: false
-            };
-        },
         props: {
             position: {
                 type: String,
@@ -32,6 +27,11 @@
                     return ['click','hover'].indexOf(value)>=0;
                 }
             }
+        },
+        data() {
+            return {
+                visible: false
+            };
         },
         computed: {
             classes() {
@@ -159,11 +159,13 @@
             transform: translateY(-100%);
 
             &::before, &::after {
+                left: 1em;
+                border-bottom: none;
+            }
+            &::before{
                 border-top-color: #333;
                 top: calc(100% + 1px);
-                left: 1em;
             }
-
             &::after {
                 border-top-color: white;
                 top: 100%;
@@ -174,8 +176,12 @@
             margin-top: 10px;
 
             &::before, &::after {
-                bottom: calc(100% + 1px);
                 left: 1em;
+                border-top: none;
+            }
+
+            &::before{
+                bottom: calc(100% + 1px);
                 border-bottom-color: #333;
             }
 
@@ -190,34 +196,34 @@
             margin-left: -10px;
 
             &::before, &::after {
-                left: calc(100% + 1px);
                 bottom: 50%;
                 transform: translateY(50%);
+                border-right: none;
+            }
+            &::before{
+                left: calc(100% + 1px);
                 border-left-color: #333;
             }
-
             &::after {
                 left: 100%;
-                bottom: 50%;
-                transform: translateY(50%);
                 border-left-color: white;
             }
         }
 
         &.position-right {
             margin-left: 10px;
-
-            &::before, &::after {
-                right: calc(100% + 1px);
+            &::before, &::after{
                 bottom: 50%;
                 transform: translateY(50%);
+                border-left:none;
+            }
+            &::before {
+                right: calc(100% + 1px);
                 border-right-color: #333;
             }
 
             &::after {
                 right: 100%;
-                bottom: 50%;
-                transform: translateY(50%);
                 border-right-color: white;
             }
         }

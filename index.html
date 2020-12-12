@@ -7,14 +7,26 @@
 </head>
 <body>
 <div id="app">
-    <m-collapse>
-        <m-collapse-item title="标题一">
+    <m-collapse :selected.sync="selected">
+        <m-collapse-item title="标题一" name="1">
             内容一
         </m-collapse-item>
-        <m-collapse-item title="标题二">
+        <m-collapse-item title="标题二" name="2">
             内容二
         </m-collapse-item>
-        <m-collapse-item title="标题三">
+        <m-collapse-item title="标题三" name="3">
+            内容三
+        </m-collapse-item>
+    </m-collapse>
+{{selected}}
+    <m-collapse single selected="2">
+        <m-collapse-item title="标题一" name="1">
+            内容一
+        </m-collapse-item>
+        <m-collapse-item title="标题二" name="2">
+            内容二
+        </m-collapse-item>
+        <m-collapse-item title="标题三" name="3">
             内容三
         </m-collapse-item>
     </m-collapse>

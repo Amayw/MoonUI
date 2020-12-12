@@ -1,6 +1,6 @@
 <template>
     <div class="m-collapse-item">
-        <div class="m-title"  @click="open=!open">
+        <div class="m-title"  @click="toggle">
             <m-icon icon="right"></m-icon>
             <span>{{title}}</span>
         </div>
@@ -17,11 +17,41 @@
             title:{
                 type:String,
                 required:true
+            },
+            name:{
+                type:String,
+                required: true
             }
         },
         data(){
             return {
                 open:false
+            }
+        },
+        inject:['eventBus'],
+        mounted(){
+            this.eventBus&&this.eventBus.$on('update:selected',(name)=>{
+                if(this.name === name){
+                    this.show()
+                }else{
+                    this.close();
+                }
+            })
+        },
+        methods:{
+            toggle(){
+                if(this.open){
+                    this.close();
+                }else{
+                    this.show();
+                    this.eventBus&&this.eventBus.$emit('update:selected',this.name);
+                }
+            },
+            show(){
+                this.open=true;
+            },
+            close(){
+                this.open=false;
             }
         }
     };

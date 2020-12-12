@@ -1,7 +1,7 @@
 <template>
     <div class="m-collapse-item">
         <div class="m-title"  @click="toggle">
-            <m-icon icon="right"></m-icon>
+            {{single}}<m-icon icon="right"></m-icon>
             <span>{{title}}</span>
         </div>
         <div v-if="open" class="m-content">
@@ -25,7 +25,8 @@
         },
         data(){
             return {
-                open:false
+                open:false,
+                single:false
             }
         },
         inject:['eventBus'],
@@ -34,7 +35,9 @@
                 if(this.name === name){
                     this.show()
                 }else{
-                    this.close();
+                    if(this.single){
+                        this.close();
+                    }
                 }
             })
         },

@@ -33,6 +33,10 @@
                 this.$emit('update:selected',name)
             })
 
+            this.$children.forEach((vm)=>{
+                vm.single=this.single;
+            })
+
         }
     };
 </script>

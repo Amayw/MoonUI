@@ -1,6 +1,6 @@
 <template>
     <svg class="m-icon">
-        <use :xlink:href=`#i-${icon}`></use>
+        <use :xlink:href="`#i-${icon}`"></use>
     </svg>
 </template>
 

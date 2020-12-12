@@ -19,7 +19,8 @@
         </m-collapse-item>
     </m-collapse>
 
-    <m-collapse single selected="2">
+    <m-collapse single :selected.sync="selected">
+        {{selected}}
         <m-collapse-item title="标题一" name="1">
             内容一
         </m-collapse-item>

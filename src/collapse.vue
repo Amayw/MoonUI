@@ -14,7 +14,7 @@
                 default:false
             },
             selected:{
-                type:String
+                type:Array
             }
         },
         data(){
@@ -28,13 +28,28 @@
                 }
         },
         mounted() {
+            //初始化，告诉所有子组件当前selected数组的值
             this.eventBus.$emit('update:selected',this.selected);
-            this.eventBus.$on('update:selected',(name)=>{
-                this.$emit('update:selected',name)
+            //监听添加选中面板事件
+            this.eventBus.$on('update:addSelected',(name)=>{
+                //添加
+                let tempSelected=this.single?[]:JSON.parse(JSON.stringify(this.selected));
+                tempSelected.push(name);
+                //通知外部更新后的selected数组
+                this.$emit('update:selected',tempSelected)
+                //通知内部更新后的selected数组
+                this.eventBus.$emit('update:selected',tempSelected)
             })
-
-            this.$children.forEach((vm)=>{
-                vm.single=this.single;
+            //监听移除选中面板事件
+            this.eventBus.$on('update:removeSelected',(name)=>{
+                //删除
+                let tempSelected=JSON.parse(JSON.stringify(this.selected));
+                let index=tempSelected.indexOf(name);
+                tempSelected.splice(index,1);
+                //通知外部更新后的selected数组
+                this.$emit('update:selected',tempSelected)
+                //通知内部更新后的selected数组
+                this.eventBus.$emit('update:selected',tempSelected)
             })
 
         }

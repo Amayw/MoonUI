@@ -1,7 +1,7 @@
 <template>
     <div class="m-collapse-item">
         <div class="m-title"  @click="toggle">
-            {{single}}<m-icon icon="right"></m-icon>
+            <m-icon icon="right"></m-icon>
             <span>{{title}}</span>
         </div>
         <div v-if="open" class="m-content">
@@ -25,36 +25,24 @@
         },
         data(){
             return {
-                open:false,
-                single:false
+                open:false
             }
         },
         inject:['eventBus'],
         mounted(){
-            this.eventBus&&this.eventBus.$on('update:selected',(name)=>{
-                if(this.name === name){
-                    this.show()
-                }else{
-                    if(this.single){
-                        this.close();
-                    }
-                }
+            this.eventBus&&this.eventBus.$on('update:selected',(selected)=>{
+                this.open = selected.indexOf(this.name)>=0;
             })
         },
         methods:{
             toggle(){
                 if(this.open){
-                    this.close();
+                    this.open=false;
+                    this.eventBus&&this.eventBus.$emit('update:removeSelected',this.name);
                 }else{
-                    this.show();
-                    this.eventBus&&this.eventBus.$emit('update:selected',this.name);
+                    this.open=true;
+                    this.eventBus&&this.eventBus.$emit('update:addSelected',this.name);
                 }
-            },
-            show(){
-                this.open=true;
-            },
-            close(){
-                this.open=false;
             }
         }
     };

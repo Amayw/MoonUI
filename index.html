@@ -7,35 +7,17 @@
 </head>
 <body>
 <div id="app">
-    <m-popover  position="left">
-        <template slot="content">
-            <div>popover的内容</div>
-            <div>popover的内容</div>
-            <div>popover的内容</div>
-        </template>
-        <m-button>click</m-button>
-    </m-popover>
-    <m-popover  position="right">
-        <template slot="content">
-            <div>popover的内容</div>
-        </template>
-        <m-button>click</m-button>
-    </m-popover>
-    <m-popover  position="left" trigger="hover">
-        <template slot="content">
-            <div>popover的内容</div>
-            <div>popover的内容</div>
-            <div>popover的内容</div>
-
-        </template>
-        <m-button>click</m-button>
-    </m-popover>
-    <m-popover  position="right"  trigger="hover">
-        <template slot="content">
-            <div>popover的内容</div>
-        </template>
-        <m-button>click</m-button>
-    </m-popover>
+    <m-collapse>
+        <m-collapse-item title="标题一">
+            内容一
+        </m-collapse-item>
+        <m-collapse-item title="标题二">
+            内容二
+        </m-collapse-item>
+        <m-collapse-item title="标题三">
+            内容三
+        </m-collapse-item>
+    </m-collapse>
 </div>
 <script src="./src/app.js"></script>
 </body>

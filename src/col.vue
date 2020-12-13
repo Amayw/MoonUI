@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-col" :class="colClass"
+    <div class="m-col" :class="colClass"
          :style="colStyle">
             <slot></slot>
     </div>
@@ -79,7 +79,7 @@
 </script>
 
 <style lang="scss">
-    .moon-col{
+    .m-col{
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {

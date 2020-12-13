@@ -1,6 +1,6 @@
 <template>
-    <div class="wrapper" :class="{error,tip}">
-        <input :value='value' :disabled="disabled" :readonly="readonly"
+    <div class="m-wrapper" :class="{error,tip}">
+        <input class="m-input" :value='value' :disabled="disabled" :readonly="readonly"
                @change="$emit('change',$event.target.value)"
                @input="$emit('input',$event.target.value)"
                @focus="$emit('focus',$event.target.value)"
@@ -24,7 +24,9 @@
             'm-icon':Icon
         },
         props:{
-            value:{},
+            value:{
+
+            },
             disabled:{
                 type:Boolean,
                 default:false
@@ -46,19 +48,21 @@
 <style lang="scss" scoped>
     $height:32px;
     $border-color:#999;
-    $border-color-hover:#666;
+    $border-color-hover: #666666;
     $border-radius:4px;
     $font-size:12px;
-    $box-shadow-color:rgba(0,0,0,0.5);
+    $box-shadow-color: rgba(102, 102,102, 0.3);
     $disabled-color:#bbb;
-    $red:#F1453D;
-    $green:green;
-    .wrapper {
+    $red: #f56c6c;
+    $box-shadow-red: rgba(245, 108,108, 0.5);
+    $green: #67c23a;
+    $box-shadow-green: rgba(103, 194,58, 0.5);
+    .m-wrapper {
         font-size: $font-size;
         display: inline-flex;
         align-items: center;
 
-        > input {
+        > .m-input {
             height: $height;
             border: 1px solid $border-color;
             border-radius: $border-radius;
@@ -86,12 +90,12 @@
                 margin-right: .5em;
             }
 
-            > input {
+            > .m-input {
                 border-color: $red;
                 color: $red;
 
                 &:focus {
-                    box-shadow: inset 0 1px 3px $red;
+                    box-shadow: inset 0 1px 3px $box-shadow-red;
                 }
             }
 
@@ -107,11 +111,11 @@
             :not(lastchild){
                 margin-right: .5em;
             }
-            >input{
+            >.m-input{
                 border-color: $green;
                 color: $green;
                 &:focus{
-                    box-shadow: inset 0 1px 3px $green;
+                    box-shadow: inset 0 1px 3px $box-shadow-green;
                 }
             }
             .icon-tip{

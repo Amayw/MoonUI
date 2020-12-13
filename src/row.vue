@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-row" :style="rowStyle" :class="rowClass">
+    <div class="m-row" :style="rowStyle" :class="rowClass">
             <slot></slot>
     </div>
 </template>
@@ -37,7 +37,7 @@
 </script>
 
 <style lang="scss" scoped>
-     .moon-row{
+     .m-row{
          display: flex;
          flex-wrap: wrap;
          &.align-left{

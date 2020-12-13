@@ -50,18 +50,18 @@
   @import "../styles/helper";
 
   .wrapper {
-    > .layout-wrapper { height: 30vh;
-      > .header-wrapper { height: 3em; background: $background; }
-      > .content-wrapper { background: lighten($background, 40%); }
-      > .layout-wrapper { height: 6em;
-        > .aside-wrapper { width: 3em; background: lighten($background, 15%); }
-        > .content-wrapper { background: lighten($background, 40%); }
-        > .layout-wrapper{
-          > .content-wrapper{ background: lighten($background, 40%); }
-          > .footer-wrapper { background: $background; }
+    > .m-layout { height: 30vh;color:$font-color;text-align: center;
+      > .m-header { height: 3em; background: lighten($background, 5%); }
+      > .m-content { background: lighten($background, 30%); }
+      > .m-layout { height: 6em;
+        > .m-aside{ width: 3em; background: lighten($background, 15%); }
+        > .m-content { background: lighten($background, 30%); }
+        > .m-layout{
+          > .m-content{ background: lighten($background, 30%); }
+          > .m-footer { background: $background; }
         }
       }
-      > .footer-wrapper { background: $background; }
+      > .m-footer { background: lighten($background, 5%); }
     }
   }
 </style>

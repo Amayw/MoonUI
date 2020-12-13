@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-content">
+    <div class="m-content">
         <slot></slot>
     </div>
 </template>
@@ -11,7 +11,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-content{
+    .m-content{
         flex-grow: 1;
     }
 </style>

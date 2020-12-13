@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-tabs">
+    <div class="m-tabs">
         <slot></slot>
     </div>
 </template>
@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-tabs{
+    .m-tabs{
         display: flex;
         flex-direction: column;
         &.horizontal{

@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-aside">
+    <div class="m-aside">
         <slot></slot>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
-    <div class="moon-popover" ref="popover">
-        <div ref="contentWrapper" v-if="visible" class="moon-content-wrapper" :class="classes">
+    <div class="m-popover" ref="popover">
+        <div ref="contentWrapper" v-if="visible" class="m-content-wrapper" :class="classes">
             <slot name="content"></slot>
         </div>
         <span ref="triggerButton" style="display: inline-block">
@@ -115,13 +115,13 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-popover {
+    .m-popover {
         display: inline-flex;
         vertical-align: top;
         position: relative;
     }
 
-    .moon-content-wrapper {
+    .m-content-wrapper {
         position: absolute;
         border: 1px solid #333;
         background: white;
@@ -150,11 +150,11 @@
             }
             &::before{
                 border-top-color: #333;
-                top: calc(100% + 1px);
+                top: 100%;
             }
             &::after {
                 border-top-color: white;
-                top: 100%;
+                top:  calc(100% - 1px);
             }
         }
 

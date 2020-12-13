@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-layout" :class="{'moon-aside-layout': hasAside}">
+    <div class="m-layout" :class="{'m-aside-layout': hasAside}">
         <slot></slot>
     </div>
 </template>
@@ -23,11 +23,11 @@
 </script>
 
 <style lang="scss" scoped>
-    .moon-layout{
+    .m-layout{
         display: flex;
         flex-grow: 1;
         flex-direction: column;
-        &.moon-aside-layout{
+        &.m-aside-layout{
             flex-direction: row;
         }
     }

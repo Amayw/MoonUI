@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-header">
+    <div class="m-header">
         <slot></slot>
     </div>
 </template>

@@ -34,6 +34,10 @@
                 validator(value){
                     return ['top', 'bottom', 'middle'].indexOf(value) >= 0;
                 }
+            },
+            zIndex:{
+                type:[Number,String],
+                default:20
             }
         },
         computed:{
@@ -59,6 +63,11 @@
                         this.$refs.line.style.height=`${this.$refs.wrapper.getBoundingClientRect().height}px`;
                     })
                 }
+                if(parseInt(this.zIndex)>20){
+                    this.$nextTick(()=>{
+                        this.$refs.wrapper.style.zIndex=this.zIndex.toString();
+                    })
+                }
             },
             close(){
                 this.$el.remove();
@@ -78,7 +87,7 @@
 <style lang="scss" scoped>
     $font-size:14px;
     $toast-min-height:40px;
-    $toast-bg:pink;
+    $toast-bg: rgba(64,64,64,0.8);
     @keyframes fade{
         from{
             opacity: 0;
@@ -100,8 +109,8 @@
         align-items: center;
         background: $toast-bg;
         border-radius: 4px;
-        box-shadow: 0 03px 0 $toast-bg;
-        color: #fff;
+        box-shadow: 0 3px 0 $toast-bg;
+        color: white;
         animation: fade 300ms linear;
         &.position-top{
             border-top-left-radius: 0;

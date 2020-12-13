@@ -1,8 +1,8 @@
 <template>
-    <div class="moon-tabs-head">
+    <div class="m-tabs-head">
         <slot></slot>
         <div ref="line" class="line"></div>
-        <div class="moon-action">
+        <div class="m-action">
             <slot name="action"></slot>
         </div>
     </div>
@@ -25,21 +25,20 @@
 
 <style lang="scss" scoped>
     $tabs-height:40px;
-    .moon-tabs-head{
+    .m-tabs-head{
         height: $tabs-height;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         position: relative;
         border-bottom: 1px solid #ddd;
-        padding-bottom: -1;
         >.line{
             position: absolute;
             border-bottom: 2px solid cornflowerblue;
-            bottom: 0;
+            bottom: -1px;
             transition: all 350ms;
         }
-        >.moon-action{
+        >.m-action{
             margin-left: auto;
             display: flex;
             justify-content: center;

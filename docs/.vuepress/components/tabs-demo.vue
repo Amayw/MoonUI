@@ -3,12 +3,14 @@
     <m-tabs :selected.sync="selectedTab">
       <m-tabs-head>
         <m-tabs-item name='tab1'>
-          <m-icon icon-name="settings"></m-icon>
+          <m-icon icon="thumbs-up"></m-icon>
           Tab1
         </m-tabs-item>
         <m-tabs-item name='tab2'>Tab2</m-tabs-item>
         <m-tabs-item name='tab3'>Tab3</m-tabs-item>
-        <m-tabs-item name='tab4' disabled>Tab4</m-tabs-item>
+        <m-tabs-item name='tab4' disabled>
+          <m-icon icon="settings"></m-icon>
+          Tab4</m-tabs-item>
       </m-tabs-head>
       <m-tabs-body>
         <m-tabs-pane name='tab1'>内容1</m-tabs-pane>

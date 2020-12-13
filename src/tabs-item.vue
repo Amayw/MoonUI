@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-tabs-item" @click="updateSelected" :class="classes" :data-name="name">
+    <div class="m-tabs-item" @click="updateSelected" :class="classes" :data-name="name">
             <slot></slot>
     </div>
 </template>
@@ -57,13 +57,16 @@
 
 <style lang="scss" scoped>
     $blue:#6495ed;
-    .moon-tabs-item{
+    .m-tabs-item{
         padding: 0 2em;
         height: 100%;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        >.m-icon{
+            margin-right: 6px;
+        }
         &.active{
             color: $blue;
             font-weight: bold;

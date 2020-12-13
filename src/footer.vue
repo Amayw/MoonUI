@@ -1,5 +1,5 @@
 <template>
-    <div class="moon-footer">
+    <div class="m-footer">
         <slot></slot>
     </div>
 </template>

@@ -54,7 +54,7 @@ title: 'Grid - 栅格'
 ## 选项
 ### Row 选项
 #### 1. gutter（排水沟；槽）
-通过给 Row 设置<span style='color:#3eaf7c;background-color:#F8F8F8'> gutter </span>属性, 可以让栅格有间隔。单位为<span style='color:#3eaf7c;background-color:#F8F8F8'> px </span>。    
+通过给 Row 设置<span style='color:#8397dc;background-color:#F8F8F8'> gutter </span>属性, 可以让栅格有间隔。单位为<span style='color:#8397dc;background-color:#F8F8F8'> px </span>。    
 预览  
 <ClientOnly>
   <gutter-demo></gutter-demo>
@@ -87,7 +87,7 @@ title: 'Grid - 栅格'
   $font-color: white;
   * { box-sizing: border-box; }
   .gutter-wrapper { padding-top: $wrapper-top;
-      >.m-row{
+      >.m-row{ padding: .2em;
         .item { text-align: center; color: $font-color;
           > span { display: block; background: $background; }
         }
@@ -126,7 +126,7 @@ title: 'Grid - 栅格'
   $font-color: white;
   * { box-sizing: border-box; }
   .align-wrapper{ text-align: center; color: white; padding-top: $wrapper-top;
-    .row{ padding-top: 10px;
+    .row{ padding: .2em;
       > .item { text-align: center; color: white;
         &:nth-child(odd){ background: $background; }
         &:nth-child(even){ background: lighten($background,20%); color: black; }
@@ -143,7 +143,7 @@ title: 'Grid - 栅格'
 例如：三个等宽的列可以使用`<i-col span="8">列</i-col>` 来创建其中一个，其余两个再复制两份。
 
 #### 2. offset
-使用<span style='color:#3eaf7c;background-color:#F8F8F8'> offset </span>属性,可以将列向右侧偏。  
+使用<span style='color:#8397dc;background-color:#F8F8F8'> offset </span>属性,可以将列向右侧偏。  
 例如，`offset="4"` 将元素向右侧偏移了 4 个列（column）的宽度。  
 预览
 <ClientOnly>
@@ -176,7 +176,7 @@ title: 'Grid - 栅格'
   $font-color: white;
   * { box-sizing: border-box; }
   .offset-wrapper { padding-top: $wrapper-top;
-    > .m-row {
+    > .m-row { padding: .2em;
       > .item { text-align: center; color: $font-color;
         > span { display: block; background: $background; }
       }
@@ -227,9 +227,8 @@ title: 'Grid - 栅格'
   $font-color: white;
   * { box-sizing: border-box; }
   .response-wrapper { padding-top: $wrapper-top;
-    > .m-row {
-      > .item { text-align: center; color: $font-color;
-        > span { display: block; background: $background; }
+    > .m-row { padding: .2em;
+      > .item { text-align: center; color: $font-color; background: $background;
       }
     }
   }

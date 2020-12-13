@@ -24,7 +24,7 @@
 <style lang="scss" scoped>
   @import "../styles/helper";
 
-  .grid-wrapper{
+  .grid-wrapper{ padding-top: $wrapper-top;
     > .m-row{ padding: .2em;
       > .item { text-align: center; color: $font-color;
         &:nth-child(odd){ background: $background; }

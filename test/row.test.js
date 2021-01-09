@@ -5,9 +5,9 @@ import Col from '../src/col'
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
-describe('Button', () => {
+describe('Row', () => {
     it('存在.', () => {
-        expect(Row).to.be.ok
+        expect(Row).to.exist
     })
 
     it('row接收gutter',(done)=>{
@@ -24,16 +24,16 @@ describe('Button', () => {
             el:div
         });
         setTimeout(()=>{
-            const row=vm.$el.querySelector('.moon-row');
+            const row=vm.$el.querySelector('.m-row');
             expect(getComputedStyle(row).marginLeft).to.eq('-10px');
             expect(getComputedStyle(row).marginRight).to.eq('-10px');
-            const cols=vm.$el.querySelectorAll('.moon-col');
+            const cols=vm.$el.querySelectorAll('.m-col');
             expect(getComputedStyle(cols[0]).paddingRight).to.eq('10px');
             expect(getComputedStyle(cols[1]).paddingLeft).to.eq('10px');
             done();
             vm.$el.remove();
             vm.$destroy();
-        })
+        },0)
     })
 
     it('row接收align',()=>{

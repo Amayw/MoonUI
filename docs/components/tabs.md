@@ -1,5 +1,5 @@
 ---
-title: 'Tabs - 标签'
+title: 'Tabs 标签'
 ---
 # 标签
 ## 预览

@@ -47,7 +47,8 @@ new Vue({
     el:'#app',
     data(){
         return{
-            selected:['2']
+            selected:['2'],
+            value:"asdf"
         }
     },
     created(){

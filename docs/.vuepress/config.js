@@ -1,12 +1,14 @@
 module.exports = {
     title: 'MoonUI',
-    description: '一个超粉嫩的UI组件库',
+    base:'/moonuiwebsite/',
+    description: '一个UI组件库',
     themeConfig: {
         logo: '/logo.png',
         nav: [
             { text: '主页', link: '/' },
             { text: '文档', link: '/get-started/' },
-            { text: '交流', link: 'https://google.com', target:'_self', rel:'' }
+            { text: '组件', link: '/components/button/' },
+            { text: 'github', link: 'https://github.com/Amayw/MoonUI', target:'_self', rel:'' }
         ],
         sidebar: [
             {
@@ -28,7 +30,14 @@ module.exports = {
                 title:'组件',
                 collapsable: false,
                 children: [
-                    '/components/button'
+                    '/components/button',
+                    '/components/input',
+                    '/components/grid',
+                    '/components/layout',
+                    '/components/tabs',
+                    '/components/popover',
+                    '/components/toast',
+                    '/components/collapse',
                 ]
             }
         ]

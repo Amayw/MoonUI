@@ -1,5 +1,27 @@
-import Button from './src/button.vue'
-import ButtonGroup from './src/button-group.vue'
-import Icon from './src/icon.vue'
+import Button from './src/button'
+import ButtonGroup from './src/button-group'
+import Icon from './src/icon'
+import Col from './src/col'
+import Collapse from './src/collapse'
+import CollapseItem from './src/collapse-item'
+import Content from './src/content'
+import Footer from './src/footer'
+import Header from './src/Header'
+import Input from './src/input'
+import Layout from './src/layout'
+import Popover from './src/popover'
+import Row from './src/row'
+import Aside from './src/aside'
+import Tabs from './src/tabs'
+import TabsBody from './src/tabs-body'
+import TabsHead from './src/tabs-head'
+import TabsItem from './src/tabs-item'
+import TabsPane from './src/tabs-pane'
+import Toast from './src/toast'
+import ToastPlugin from './src/ToastPlugin'
 
-export {Button,ButtonGroup,Icon}
+
+export {
+    Button, ButtonGroup, Icon, Col, Collapse, CollapseItem, Content, Footer, Header, Input, Layout, Popover
+    , Row, Aside, Tabs, TabsHead, TabsBody, TabsItem, TabsPane, Toast,ToastPlugin
+}

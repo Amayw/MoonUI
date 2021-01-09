@@ -126,7 +126,7 @@
         border: 1px solid #333;
         background: white;
         filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
-        padding: 1em;
+        padding: 0.5em;
         border-radius: 4px;
         max-width: 20em;
         word-break: break-all;

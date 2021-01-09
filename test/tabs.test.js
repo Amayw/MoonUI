@@ -1,5 +1,3 @@
-import Row from '../src/row';
-
 const expect = chai.expect;
 import Vue from 'vue'
 import Tabs from '../src/tabs'
@@ -41,7 +39,7 @@ describe('Tabs', () => {
             el:div
         })
         vm.$nextTick(()=>{
-            let name=vm.$el.querySelector(`.moon-tabs-item[data-name="tabs2"]`);
+            let name=vm.$el.querySelector(`.m-tabs-item[data-name="tabs2"]`);
             expect(name.classList.contains('active')).to.be.true;
             done();
         })

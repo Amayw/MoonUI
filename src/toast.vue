@@ -136,6 +136,7 @@
         }
         >.close{
             padding-left: 16px;
+            cursor: pointer;
         }
     }
 </style>

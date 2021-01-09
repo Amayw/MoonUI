@@ -4,9 +4,47 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./favicon.ico"/>
     <title>MoonUI</title>
+    <style>
+        .item{
+            border-color: pink;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
+    <m-tabs :selected.sync="selectedTab">
+        <m-tabs-head>
+            <m-tabs-item name='tab1'>
+                <m-icon icon-name="settings"></m-icon>
+                Tab1
+            </m-tabs-item>
+            <m-tabs-item name='tab2'>Tab2</m-tabs-item>
+            <m-tabs-item name='tab3'>Tab3</m-tabs-item>
+            <m-tabs-item name='tab4' disabled>Tab4</m-tabs-item>
+        </m-tabs-head>
+        <m-tabs-body>
+            <m-tabs-pane name='tab1'>内容1</m-tabs-pane>
+            <m-tabs-pane name='tab2'>内容2</m-tabs-pane>
+            <m-tabs-pane name='tab3'>内容3</m-tabs-pane>
+            <m-tabs-pane name='tab4'>内容4</m-tabs-pane>
+        </m-tabs-body>
+    </m-tabs>
+
+        <m-row gutter="30">
+            <m-col class="item" span="8"> <span> col-8; gutter-30;</span> </m-col>
+            <m-col class="item" span="8"> <span> col-8; gutter-30;</span> </m-col>
+            <m-col class="item" span="8"> <span> col-8; gutter-30;</span> </m-col>
+        </m-row>
+
+    <input v-model:value="value">
+    <m-input :value.sync="value"></m-input>
+    <div>{{value}}</div>
+    <m-button-group>
+        <m-button>默认按钮</m-button>
+        <m-button>默认按钮</m-button>
+        <m-button>默认按钮</m-button>
+    </m-button-group>
+    <m-button icon="settings" :loading="true">anniu</m-button>
     <m-collapse :selected.sync="selected">
         <m-collapse-item title="标题一" name="1">
             内容一
